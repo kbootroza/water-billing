@@ -1,0 +1,14 @@
+{
+  "name": "water-billing",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-runtime": "6.18.0",
+    "bcrypt": "^1.0.2",
+    "materialize-css": "^0.97.8",
+    "materialize-css-meteor": "^0.97.9",
+    "meteor-node-stubs": "~0.2.0"
+  }
+}
