@@ -2,6 +2,10 @@
     {{#unless currentUser}}
          {{> atForm}}
     {{else}}
-        
+        {{#if notChoosenArea}}
+            {{> waterBilling_area}}
+        {{else}}
+            <h4>Welcome Home</h4>
+        {{/if}}
     {{/unless}}
 </template>

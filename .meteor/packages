@@ -26,7 +26,11 @@ useraccounts:materialize
 alanning:roles
 ongoworks:security
 accounts-password@1.2.12
-natestrauser:connection-banner
 aldeed:autoform
 aldeed:collection2
 matb33:collection-hooks
+session
+gildaspk:autoform-materialize
+momentjs:moment
+risul:moment-timezone
+255kb:meteor-status
