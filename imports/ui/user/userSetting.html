@@ -11,3 +11,56 @@
     <!-- Dropdown Structure -->
     <a class="remove cursor-pointer"><i class="material-icons">delete</i></a>
 </template>
+
+<!--<template name="wb_userNew">-->
+    <!--<div class="box-body">-->
+        <!--{{#if Template.subscriptionsReady}}-->
+            <!--{{#autoForm schema=schema id="wb_userNew" type="method" meteormethod="wb.insertUser"}}-->
+                <!--<div class="row">-->
+                    <!--<div class="col-xs-6">-->
+                        <!--{{> afQuickField name='profile.name'}}-->
+                        <!--{{> afQuickField name='username'}}-->
+                        <!--{{> afQuickField name='email'}}-->
+                        <!--{{> afQuickField name='password' type="password"}}-->
+                        <!--{{> afQuickField name='confirmPassword' type="password"}}-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-6">-->
+                        <!--{{> afQuickField name='roles' size=8}}-->
+                        <!--{{> afQuickField name='rolesBranch' size=6}}-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--{{> formFooterWithButton}}-->
+            <!--{{/autoForm}}-->
+        <!--{{else}}-->
+            <!--{{> loading}}-->
+        <!--{{/if}}-->
+    <!--</div>-->
+<!--</template>-->
+
+<!--&lt;!&ndash;Edit&ndash;&gt;-->
+<!--<template name="wb_userEdit">-->
+    <!--<div class="box-body">-->
+        <!--{{#if Template.subscriptionsReady}}-->
+            <!--{{#autoForm schema=schema id="wb_userEdit" doc=data type="method-update" meteormethod="wb.updateUser" singleMethodArgument=true}}-->
+                <!--<div class="row">-->
+                    <!--<div class="col-xs-6">-->
+                        <!--{{> afQuickField name='profile.name'}}-->
+                        <!--{{> afQuickField name='username'}}-->
+                        <!--{{> afQuickField name='email'}}-->
+                        <!--{{> afQuickField name='password' type="password"}}-->
+                        <!--{{> afQuickField name='confirmPassword' type="password"}}-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-6">-->
+                        <!--{{> afQuickField name='roles' size=8}}-->
+                        <!--{{> afQuickField name='rolesBranch' size=6}}-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--{{> formFooterWithButton}}-->
+            <!--{{/autoForm}}-->
+        <!--{{else}}-->
+            <!--{{> loading}}-->
+        <!--{{/if}}-->
+    <!--</div>-->
+<!--</template>-->

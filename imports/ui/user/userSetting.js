@@ -11,6 +11,14 @@ index.helpers({
     }
 });
 
+index.events({
+    'dblclick tbody > tr' (event, instance) {
+        let dataTalbe = $(event.currentTarget).closest('table').DataTable();
+        let rowData = dataTalbe.row(event.currentTarget).data();
+        console.log(rowData);
+    }
+});
+
 userSettingOptions.onRendered(function () {
     $(".dropdown-button").dropdown();
 });

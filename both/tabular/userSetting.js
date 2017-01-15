@@ -1,12 +1,28 @@
-import { Template } from 'meteor/templating';
-import { Meteor } from 'meteor/meteor';
+import {Template} from 'meteor/templating';
+import {Meteor} from 'meteor/meteor';
 Meteor.isClient && require('../../imports/ui/user/userSetting.html');
 export const UserSettingTabular = new Tabular.Table({
     name: "wb.userSettingTabular",
     collection: Meteor.users,
     columns: [
         {data: "profile.username", title: "Username"},
-        {data: "profile.isApproved", title: "Approved"},
+        {
+            data: "emails",
+            title: "Email",
+            render: function (val) {
+                return val && val[0].address;
+            }
+        },
+        {
+            data: "profile.approved",
+            title: "Approved",
+            render: function (val) {
+                if (val) {
+                    return `<span class="chip teal white-text">${val}</span>`
+                }
+                return `<span class="chip light-green accent-3 white-text">${val}</span>`
+            }
+        },
         // {data: "copies", title: "Copies Available"},
         // {
         //     data: "lastCheckedOut",
@@ -22,6 +38,9 @@ export const UserSettingTabular = new Tabular.Table({
         {data: "summary", title: "Summary"},
         {
             tmpl: Meteor.isClient && Template.wb_userSettingOptions
+        },
+        {
+            extraFields: ["email"]
         }
     ]
 });
