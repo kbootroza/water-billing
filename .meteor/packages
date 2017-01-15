@@ -21,7 +21,6 @@ shell-server@0.2.1            # Server-side component of the `meteor shell` comm
 kadira:flow-router
 kadira:blaze-layout
 fourseven:scss
-nicolaslopezj:tabular-materialize
 useraccounts:materialize
 alanning:roles
 ongoworks:security
@@ -44,3 +43,4 @@ anti:i18n
 
 zimme:active-route
 arillo:flow-router-helpers
+nicolaslopezj:tabular-materialize

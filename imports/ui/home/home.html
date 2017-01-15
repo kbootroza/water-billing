@@ -1,11 +1,7 @@
 <template name="wb_home">
-    {{#unless currentUser}}
-         {{> atForm}}
+    {{#if notChoosenArea}}
+        {{> waterBilling_area}}
     {{else}}
-        {{#if notChoosenArea}}
-            {{> waterBilling_area}}
-        {{else}}
-            <h4>Welcome Home</h4>
-        {{/if}}
-    {{/unless}}
+        <h4>Welcome Home</h4>
+    {{/if}}
 </template>
