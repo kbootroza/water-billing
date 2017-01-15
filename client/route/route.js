@@ -1,6 +1,7 @@
 //import template js here
 import '../../imports/ui/home/home';
 import '../../imports/ui/customer/customer';
+import '../../imports/ui/customerType/customerType';
 import '../../client/layout';
 import '../../imports/ui/user/userSetting';
 //import layout render
@@ -36,3 +37,10 @@ waterBilling.route('/user-setting', {
         _Main('wb_userSetting');
     }
 });
+
+waterBilling.route('/customerType', {
+    name: 'wb.customerType',
+    action: function(query,params){
+        _Main('wb_customerType');
+    }
+})

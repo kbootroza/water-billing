@@ -1,0 +1,43 @@
+<template name="wb_customerType">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-action">
+                {{>wb_customerTypeAdd}}
+            </div>
+            {{> tabular table=dataTable selector=selector class="table striped"}}
+        </div>
+    </div>
+</template>
+
+<template name="wb_customerTypeAdd">
+    <a class="waves-effect waves-light btn" href="#wb_customerTypeAdd">Add New</a>
+    {{#autoForm collection=collection id="wb_customerTypeAdd" type="insert"}}
+        <!-- Modal Structure -->
+        <div id="wb_customerTypeAdd" class="modal">
+            <div class="modal-content">
+                <h4>Customer Type</h4>
+
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='khname'}}
+                {{> afQuickField name='memo'}}
+            </div>
+            <div class="modal-footer">
+                <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Save</a>-->
+                <button type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat">
+                    Save
+                </button>
+            </div>
+        </div>
+    {{/autoForm}}
+</template>
+
+<template name="wb_customerTypeEdit">
+
+
+</template>
+
+<template name="wb_customerTypeOptions">
+    <!-- Dropdown Structure -->
+    <a class="remove cursor-pointer"><i class="material-icons">delete</i></a>
+</template>
+

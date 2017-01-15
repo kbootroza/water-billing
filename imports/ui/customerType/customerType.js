@@ -3,16 +3,20 @@ import {AutoForm} from 'meteor/aldeed:autoform';
 import {Roles} from  'meteor/alanning:roles';
 
 //Import Page
-import "./customer.html";
-
+import './customerType.html';
 
 
 //import Collection
-import {WB_Customer} from '../../collection/customer';
+import {WB_CustomerType} from '../../collection/customerType';
 
-let indexTmpl = Template.wb_customer,
-    addTmpl=Template.wb_customerAdd,
-    editTmpl=Template.wb_customerEdit;
+//Tabular
+import {CustomerTypeTabular} from '../../../both/tabular/customerType';
+
+
+
+let indexTmpl = Template.wb_customerType,
+    addTmpl = Template.wb_customerTypeAdd,
+    editTmpl = Template.wb_customerTypeEdit;
 
 
 //====================================State===================
@@ -47,37 +51,29 @@ editTmpl.onRendered(function () {
 //====================================Helper==================
 indexTmpl.helpers({
     schema() {
-        return WB_Customer;
+        return WB_CustomerType;
+    },
+    dataTable(){
+        return CustomerTypeTabular;
     }
 });
 
-addTmpl.helpers({
+addTmpl.helpers({});
 
-});
-
-editTmpl.helpers({
-
-});
-
+editTmpl.helpers({});
 
 
 //====================================Event===================
 indexTmpl.events({
-    'click .add':function (e,t) {
+    'click .add': function (e, t) {
         $('#modal_add').modal('open');
     }
 
 })
 
-addTmpl.events({
+addTmpl.events({})
 
-
-})
-
-editTmpl.events({
-
-
-})
+editTmpl.events({})
 
 
 //====================================Destroy=================
@@ -97,10 +93,9 @@ editTmpl.onDestroyed(function () {
 })
 
 
-
 //====================================Hook====================
 AutoForm.hooks({
-    wb_customerAdd:{
+    wb_customerTypeAdd: {
         before: {
             insert: function (doc) {
 
@@ -116,7 +111,7 @@ AutoForm.hooks({
             this.done();
         }
     },
-    wb_customerEdit: {
+    wb_customerTypeEdit: {
         before: {
             insert: function (doc) {
 

@@ -2,7 +2,8 @@
   "wb": {
     "sidebarMenu": {
       "home": "Home",
-      "customer": "Customer"
+      "customer": "Customer",
+      "customerType": "Customer Type"
     },
     "home": {
       "title": "Home",
@@ -36,6 +37,10 @@
           "label": "Branch"
         }
       }
+    },
+    "customerType": {
+      "title": "Customer Type",
+      "info": "Welcome to POS!"
     }
   }
 }

@@ -1,9 +1,8 @@
-import {WB_Customer} from '../imports/collection/customer';
+import {WB_CustomerType} from '../imports/collection/customerType';
 
 
-/*
+
 Security.permit(['insert','update','remove']).collections([
+WB_CustomerType
 
-
-]).wbIsAdmin().apply();
-*/
+]).apply();
