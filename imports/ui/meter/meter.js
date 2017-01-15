@@ -108,14 +108,9 @@ AutoForm.hooks({
         }
     },
     wb_meterEdit: {
-        before: {
-            insert: function (doc) {
-
-            }
-        },
         onSuccess: function (formType, result) {
-
-
+            $('#wb_meterEditModal').modal('close');
+            Materialize.toast('Successful', 3000, 'lime accent-4 rounded')
         },
         onError: function (formType, error) {
 
