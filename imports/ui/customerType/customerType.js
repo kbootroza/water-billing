@@ -1,7 +1,6 @@
 import {Template} from 'meteor/templating';
 import {AutoForm} from 'meteor/aldeed:autoform';
 import {Roles} from  'meteor/alanning:roles';
-
 //Import Page
 import './customerType.html';
 
@@ -11,7 +10,6 @@ import {WB_CustomerType} from '../../collection/customerType';
 
 //Tabular
 import {CustomerTypeTabular} from '../../../both/tabular/customerType';
-
 
 
 let indexTmpl = Template.wb_customerType,
@@ -50,24 +48,22 @@ editTmpl.onRendered(function () {
 
 //====================================Helper==================
 indexTmpl.helpers({
-    schema() {
-        return WB_CustomerType;
-    },
     dataTable(){
         return CustomerTypeTabular;
     }
 });
 
-addTmpl.helpers({});
+addTmpl.helpers({
+    collection(){
+        return WB_CustomerType;
+    }
+});
 
 editTmpl.helpers({});
 
 
 //====================================Event===================
 indexTmpl.events({
-    'click .add': function (e, t) {
-        $('#modal_add').modal('open');
-    }
 
 })
 
@@ -98,17 +94,15 @@ AutoForm.hooks({
     wb_customerTypeAdd: {
         before: {
             insert: function (doc) {
-
+                return doc;
             }
         },
         onSuccess: function (formType, result) {
-            alertify.success("Success");
+            $('#wb_customerTypeAddModal').modal('close');
+            Materialize.toast('Successful', 3000, 'lime accent-4 rounded')
         },
         onError: function (formType, error) {
-            alertify.error(error.message);
-        }, onSubmit: function (insertDoc, updateDoc, currentDoc) {
-            event.preventDefault();
-            this.done();
+            Materialize.toast(error.message, 3000, 'red rounded')
         }
     },
     wb_customerTypeEdit: {
@@ -118,12 +112,12 @@ AutoForm.hooks({
             }
         },
         onSuccess: function (formType, result) {
-            alertify.success("Success");
+
 
         },
         onError: function (formType, error) {
 
-            alertify.error(error.message);
+
         },
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             event.preventDefault();

@@ -10,22 +10,26 @@
 </template>
 
 <template name="wb_customerTypeAdd">
-    <a class="waves-effect waves-light btn" href="#wb_customerTypeAdd">Add New</a>
+    <a class="waves-effect waves-light btn" href="#wb_customerTypeAddModal">Add New</a>
+
     {{#autoForm collection=collection id="wb_customerTypeAdd" type="insert"}}
         <!-- Modal Structure -->
-        <div id="wb_customerTypeAdd" class="modal">
+        <div id="wb_customerTypeAddModal" class="modal">
             <div class="modal-content">
-                <h4>Customer Type</h4>
+                <h4>Customer Type <span class="right"> <a href="#!" class="grey-text modal-action modal-close">X</a>
+</span></h4>
 
                 {{> afQuickField name='name'}}
-                {{> afQuickField name='khname'}}
+                {{> afQuickField name='khName'}}
                 {{> afQuickField name='memo'}}
             </div>
             <div class="modal-footer">
                 <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Save</a>-->
-                <button type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat">
-                    Save
+                <button type="reset" class="btn waves-effect waves-light white black-text">Reset</button>
+                <button class="btn waves-effect waves-light purple darken-1" type="submit">Submit
+                    <i class="material-icons right">send</i>
                 </button>
+
             </div>
         </div>
     {{/autoForm}}
@@ -38,6 +42,6 @@
 
 <template name="wb_customerTypeOptions">
     <!-- Dropdown Structure -->
-    <a class="remove cursor-pointer"><i class="material-icons">delete</i></a>
+    <a class="remove cursor-pointer"><i class="material-icons red-text small">delete</i></a>
 </template>
 
