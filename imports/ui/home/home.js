@@ -1,6 +1,6 @@
 import './home.html';
 import '../area/area';
-let indexTmpl = Template.home;
+let indexTmpl = Template.wb_home;
 
 indexTmpl.helpers({
     notChoosenArea(){

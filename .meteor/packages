@@ -34,3 +34,13 @@ gildaspk:autoform-materialize
 momentjs:moment
 risul:moment-timezone
 255kb:meteor-status
+
+# Language
+tap:i18n
+tap:i18n-ui
+gwendall:simple-schema-i18n
+gwendall:autoform-i18n
+anti:i18n
+
+zimme:active-route
+arillo:flow-router-helpers

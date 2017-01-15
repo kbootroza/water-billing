@@ -1,5 +1,6 @@
 //import template js here
 import '../../imports/ui/home/home';
+import '../../imports/ui/customer/customer';
 import '../../client/layout';
 //import layout render
 require("materialize-css-meteor")
@@ -15,8 +16,15 @@ var waterBilling = FlowRouter.group({
 });
 
 FlowRouter.route('/', {
-    name: 'home',
+    name: 'wb.home',
     action: function(query,params){
-        _Main('home');
+        _Main('wb_home');
+    }
+})
+
+waterBilling.route('/customer', {
+    name: 'wb.customer',
+    action: function(query,params){
+        _Main('wb_customer');
     }
 })

@@ -2,6 +2,7 @@
   <title>Water-Billing</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <template name="MainLayout">
   {{>navbar}}
   <div class="container">
@@ -9,6 +10,8 @@
   </div>
   {{> meteorStatus position="bottom"}}
 </template>
+
+
 <template name="navbar">
   <nav class="blue lighten-1">
     <ul id="slide-out" class="side-nav">
@@ -29,6 +32,11 @@
       </li>
       <li><a class="subheader">Subheader</a></li>
       <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+      <li>
+        <a class="waves-effect"  href="{{pathFor 'wb.customer'}}">
+            <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.customer"}}</span>
+        </a>
+      </li>
     </ul>
     <ul class="right hide-on-med-and-down">
       <li><a href="/">Home</a></li>

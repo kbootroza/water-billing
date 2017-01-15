@@ -1,0 +1,41 @@
+{
+  "wb": {
+    "sidebarMenu": {
+      "home": "Home",
+      "customer": "Customer"
+    },
+    "home": {
+      "title": "Home",
+      "info": "Welcome to POS!"
+    },
+    "customer": {
+      "title": "Customer",
+      "schema": {
+        "_id": {
+          "label": "ID"
+        },
+        "name": {
+          "label": "Name"
+        },
+        "gender": {
+          "label": "Gender"
+        },
+        "dob": {
+          "label": "Date of birth"
+        },
+        "address": {
+          "label": "Address"
+        },
+        "telephone": {
+          "label": "Telephone"
+        },
+        "email": {
+          "label": "Email"
+        },
+        "branchId": {
+          "label": "Branch"
+        }
+      }
+    }
+  }
+}

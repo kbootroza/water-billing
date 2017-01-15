@@ -1,3 +1,3 @@
 export const _Main = (tmpl) =>{
-    BlazeLayout.render('MainLayout', {content: 'home'})
+    BlazeLayout.render('MainLayout', {content: tmpl})
 }
