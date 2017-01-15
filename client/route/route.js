@@ -4,6 +4,7 @@ import '../../imports/ui/customer/customer';
 import '../../imports/ui/customerType/customerType';
 import '../../client/layout';
 import '../../imports/ui/user/userSetting';
+import '../../imports/ui/meter/meter';
 //import layout render
 require("materialize-css-meteor")
 import {_Main} from '../libs/_renderLayout';
@@ -48,4 +49,11 @@ waterBilling.route('/customerType', {
     action: function(query,params){
         _Main('wb_customerType');
     }
-})
+});
+
+waterBilling.route('/meter', {
+    name: 'wb.meter',
+    action: function(query,params){
+        _Main('wb_meter');
+    }
+});
