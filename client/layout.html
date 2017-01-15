@@ -1,68 +1,76 @@
 <head>
-  <title>Water-Billing</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Water-Billing</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <template name="MainLayout">
-  {{>navbar}}
-  <div class="container">
-    {{> Template.dynamic template=content}}
-  </div>
-  {{> meteorStatus position="bottom"}}
+    {{>navbar}}
+    <div class="container">
+        {{#if currentUser}}
+            {{#if notChoosenArea}}
+                {{> wb_home}}
+            {{else}}
+                {{> Template.dynamic template=content}}
+            {{/if}}
+        {{else}}
+            {{> atForm}}
+        {{/if}}
+    </div>
+    {{> meteorStatus position="bottom"}}
 </template>
 
 
 <template name="navbar">
-  <nav class="blue lighten-1">
-    <ul id="slide-out" class="side-nav">
-      <li>
-        <div class="userView">
-          <div class="background">
-            <img src="images/office.jpg">
-          </div>
-          <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-          <a href="#!name"><span class="white-text name">John Doe</span></a>
-          <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-        </div>
-      </li>
-      <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-      <li><a href="#!">Second Link</a></li>
-      <li>
-        <div class="divider"></div>
-      </li>
-      <li><a class="subheader">Subheader</a></li>
-      <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-      <li>
-        <a class="waves-effect"  href="{{pathFor 'wb.customer'}}">
-            <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.customer"}}</span>
-        </a>
-      </li>
-    </ul>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="/">Home</a></li>
-      <li><a href="/addPlace">Add Place</a></li>
-      <li>
-        <a class="dropdown-button" href="#!" data-activates="dropdown1">
-        {{#if currentUser}}
-          {{ currentUser.profile.username }}
-        <i class="material-icons right">arrow_drop_down</i>
-        {{/if}}
-        
-        </a>
-      </li>
-      <ul id='dropdown1' class='dropdown-content'>
-        {{#if currentUser}}
-        <li><a class="logout">Logout</a></li>
-        <li><a href="#!">Second</a></li>
-        <li><a href="#!">Third</a></li>
-        <li><a href="#!">Fourth</a></li>
-        {{/if}}
-      </ul>
-    </ul>
-    <ul class="left">
-      <li>
-        <a href="#" data-activates="slide-out" class="enable-sidenav"><i class="material-icons">menu</i></a>
-      </li>
-    </ul>
-  </nav>
+    <nav class="blue lighten-1">
+        <ul id="slide-out" class="side-nav">
+            <li>
+                <div class="userView">
+                    <div class="background">
+                        <img src="images/office.jpg">
+                    </div>
+                    <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+                    <a href="#!name"><span class="white-text name">John Doe</span></a>
+                    <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                </div>
+            </li>
+            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+            <li><a href="#!">Second Link</a></li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a class="subheader">Subheader</a></li>
+            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+            <li>
+                <a class="waves-effect" href="{{pathFor 'wb.customer'}}">
+                    <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.customer"}}</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <li><a href="/addPlace">Add Place</a></li>
+            <li>
+                <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                    {{#if currentUser}}
+                        {{ currentUser.profile.username }}
+                        <i class="material-icons right">arrow_drop_down</i>
+                    {{/if}}
+
+                </a>
+            </li>
+            <ul id='dropdown1' class='dropdown-content'>
+                {{#if currentUser}}
+                    <li><a class="logout">Logout</a></li>
+                    <li><a href="{{pathFor 'wb.userSetting'}}">Setting</a></li>
+                    <li><a href="#!">Third</a></li>
+                    <li><a href="#!">Fourth</a></li>
+                {{/if}}
+            </ul>
+        </ul>
+        <ul class="left">
+            <li>
+                <a href="#" data-activates="slide-out" class="enable-sidenav"><i class="material-icons">menu</i></a>
+            </li>
+        </ul>
+    </nav>
 </template>
