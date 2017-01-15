@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
-
+Meteor.isClient && require('../../imports/ui/user/userSetting.html');
 export const UserSettingTabular = new Tabular.Table({
     name: "wb.userSettingTabular",
     collection: Meteor.users,
@@ -20,8 +20,8 @@ export const UserSettingTabular = new Tabular.Table({
         //     }
         // },
         {data: "summary", title: "Summary"},
-        // {
-        //     tmpl: Meteor.isClient && Template.userSettingOption
-        // }
+        {
+            tmpl: Meteor.isClient && Template.wb_userSettingOptions
+        }
     ]
 });
