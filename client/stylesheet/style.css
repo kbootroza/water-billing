@@ -1,7 +1,8 @@
-body {
+body,html {
     background: #bbdefb;
 }
 
 .cursor-pointer{
     cursor: pointer;
 }
+

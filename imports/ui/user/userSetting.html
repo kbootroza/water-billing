@@ -2,65 +2,68 @@
     <div class="card">
         <div class="card-content">
             <div class="card-title">User Setting</div>
-            {{> tabular table=dataTable selector=selector class="table striped"}}
+            {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
         </div>
     </div>
 </template>
-
 <template name="wb_userSettingOptions">
     <!-- Dropdown Structure -->
     <a class="remove cursor-pointer"><i class="material-icons">delete</i></a>
 </template>
-
 <!--<template name="wb_userNew">-->
-    <!--<div class="box-body">-->
-        <!--{{#if Template.subscriptionsReady}}-->
-            <!--{{#autoForm schema=schema id="wb_userNew" type="method" meteormethod="wb.insertUser"}}-->
-                <!--<div class="row">-->
-                    <!--<div class="col-xs-6">-->
-                        <!--{{> afQuickField name='profile.name'}}-->
-                        <!--{{> afQuickField name='username'}}-->
-                        <!--{{> afQuickField name='email'}}-->
-                        <!--{{> afQuickField name='password' type="password"}}-->
-                        <!--{{> afQuickField name='confirmPassword' type="password"}}-->
-                    <!--</div>-->
-                    <!--<div class="col-xs-6">-->
-                        <!--{{> afQuickField name='roles' size=8}}-->
-                        <!--{{> afQuickField name='rolesBranch' size=6}}-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--{{> formFooterWithButton}}-->
-            <!--{{/autoForm}}-->
-        <!--{{else}}-->
-            <!--{{> loading}}-->
-        <!--{{/if}}-->
-    <!--</div>-->
+<!--<div class="box-body">-->
+<!--{{#if Template.subscriptionsReady}}-->
+<!--{{#autoForm schema=schema id="wb_userNew" type="method" meteormethod="wb.insertUser"}}-->
+<!--<div class="row">-->
+<!--<div class="col-xs-6">-->
+<!--{{> afQuickField name='profile.name'}}-->
+<!--{{> afQuickField name='username'}}-->
+<!--{{> afQuickField name='email'}}-->
+<!--{{> afQuickField name='password' type="password"}}-->
+<!--{{> afQuickField name='confirmPassword' type="password"}}-->
+<!--</div>-->
+<!--<div class="col-xs-6">-->
+<!--{{> afQuickField name='roles' size=8}}-->
+<!--{{> afQuickField name='rolesBranch' size=6}}-->
+<!--</div>-->
+<!--</div>-->
+<!--{{> formFooterWithButton}}-->
+<!--{{/autoForm}}-->
+<!--{{else}}-->
+<!--{{> loading}}-->
+<!--{{/if}}-->
+<!--</div>-->
 <!--</template>-->
-
-<!--&lt;!&ndash;Edit&ndash;&gt;-->
-<!--<template name="wb_userEdit">-->
-    <!--<div class="box-body">-->
-        <!--{{#if Template.subscriptionsReady}}-->
-            <!--{{#autoForm schema=schema id="wb_userEdit" doc=data type="method-update" meteormethod="wb.updateUser" singleMethodArgument=true}}-->
-                <!--<div class="row">-->
-                    <!--<div class="col-xs-6">-->
-                        <!--{{> afQuickField name='profile.name'}}-->
-                        <!--{{> afQuickField name='username'}}-->
-                        <!--{{> afQuickField name='email'}}-->
-                        <!--{{> afQuickField name='password' type="password"}}-->
-                        <!--{{> afQuickField name='confirmPassword' type="password"}}-->
-                    <!--</div>-->
-                    <!--<div class="col-xs-6">-->
-                        <!--{{> afQuickField name='roles' size=8}}-->
-                        <!--{{> afQuickField name='rolesBranch' size=6}}-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--{{> formFooterWithButton}}-->
-            <!--{{/autoForm}}-->
-        <!--{{else}}-->
-            <!--{{> loading}}-->
-        <!--{{/if}}-->
-    <!--</div>-->
-<!--</template>-->
+<template name="wb_userSettingEdit">
+    {{#if subscriptionsReady}}
+    <div class="container animated fadeIn">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">
+                    Edit User
+                </div>
+                {{#autoForm schema=schema id="wb_userEdit" doc=data type="method-update" meteormethod="wb.updateUser" singleMethodArgument=true}}
+                <div class="row">
+                    <div class="col-xs-6">
+                        {{> afQuickField name='profile.username'}} 
+                        {{> afQuickField name='username'}} 
+                        {{> afQuickField name='email'}} 
+                        {{> afQuickField
+                        name='password' type="password"}}
+                        {{> afQuickField name='confirmPassword' type="password"}}
+                    </div>
+                    <div class="col-xs-6">
+                        {{> afQuickField name='roles' size=8}} {{> afQuickField name='rolesBranch' size=6}}
+                    </div>
+                </div>
+                {{/autoForm}}
+            </div>
+        </div>
+        </div>
+    {{else}}
+        <div class="progress ">
+            <div class="indeterminate "></div>
+         </div>
+        
+    {{/if}}
+</template>

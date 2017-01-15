@@ -37,7 +37,12 @@ waterBilling.route('/user-setting', {
         _Main('wb_userSetting');
     }
 });
-
+waterBilling.route('/user-setting/:userId/edit', {
+   name: 'wb.userSettingEdit',
+    action: function(query,params) {
+        _Main('wb_userSettingEdit');
+    }
+});
 waterBilling.route('/customerType', {
     name: 'wb.customerType',
     action: function(query,params){
