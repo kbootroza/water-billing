@@ -1,6 +1,8 @@
 import {Template} from 'meteor/templating';
 import {AutoForm} from 'meteor/aldeed:autoform';
 import {Roles} from  'meteor/alanning:roles';
+import {alertify} from 'meteor/ovcharik:alertifyjs';
+
 //Import Page
 import './customerType.html';
 
@@ -64,7 +66,23 @@ editTmpl.helpers({});
 
 //====================================Event===================
 indexTmpl.events({
-
+    'click .remove'(e,t){
+        var self=this;
+        alertify.confirm(
+            "Customer Type",
+            "Are you sure to delete [" + self._id + "]?",
+            function () {
+                WB_CustomerType.remove(self._id, function (error) {
+                    if (error) {
+                        alertify.error(error.message);
+                    } else {
+                        alertify.success("Success");
+                    }
+                });
+            },
+            null
+        );
+    }
 })
 
 addTmpl.events({})
