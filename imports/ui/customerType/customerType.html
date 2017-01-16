@@ -4,7 +4,7 @@
             <div class="card-action">
                 {{>wb_customerTypeAdd}}
             </div>
-            {{> tabular table=dataTable selector=selector class="table striped"}}
+            {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
         </div>
     </div>
 </template>
@@ -16,8 +16,7 @@
         <!-- Modal Structure -->
         <div id="wb_customerTypeAddModal" class="modal">
             <div class="modal-content">
-                <h4>Customer Type <span class="right"> <a href="#!" class="grey-text modal-action modal-close">X</a>
-</span></h4>
+                <h4>Customer Type <span class="right"> <a href="#!" class="grey-text modal-action modal-close">X</a></span></h4>
 
                 {{> afQuickField name='name'}}
                 {{> afQuickField name='khName'}}
@@ -36,7 +35,31 @@
 </template>
 
 <template name="wb_customerTypeEdit">
+    {{#if subscriptionsReady}}
+        <div class="container animated fadeIn">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">
+                        Edit Customer Type
+                    </div>
+                    {{#autoForm collection=collection id="wb_customerTypeEdit" doc=data type="update"}}
+                        <div class="row">
+                            <div class="col-xs-6">
+                                {{> afQuickField name='name'}}
+                                {{> afQuickField name='khName'}}
+                                {{> afQuickField name='memo'}}
+                            </div>
+                        </div>
+                    {{/autoForm}}
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div class="progress ">
+            <div class="indeterminate "></div>
+        </div>
 
+    {{/if}}
 </template>
 
 <template name="wb_customerTypeOptions">

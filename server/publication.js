@@ -1,9 +1,20 @@
 import {Meteor} from 'meteor/meteor';
+import {WB_CustomerType} from "../imports/collection/customerType";
+
 Meteor.publish('meteorUser', function meteorUser({_id}){
     if(this.userId){
         Meteor._sleepForMs(2000);
         let user =  Meteor.users.find({_id});
         return user;
+    }
+    return this.ready();
+});
+
+Meteor.publish('wb_customerTypeById', function meteorUser({_id}){
+    if(this.userId){
+        Meteor._sleepForMs(2000);
+        let doc =  WB_CustomerType.find({_id});
+        return doc;
     }
     return this.ready();
 });

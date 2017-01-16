@@ -31,7 +31,14 @@ addTmpl.onCreated(function () {
 
 });
 editTmpl.onCreated(function () {
-
+    this.subUserReady = new ReactiveVar(false);
+    this.autorun(()=>{
+        let id = FlowRouter.getParam('customerTypeId');
+        if(id){
+            this.subscription = Meteor.subscribe('wb_customerTypeById', {_id: id});
+            console.log(this.subscription);
+        }
+    });
 });
 
 
@@ -45,7 +52,11 @@ addTmpl.onRendered(function () {
 });
 
 editTmpl.onRendered(function () {
-
+    this.autorun(()=>{
+        if(this.subscription.ready()){
+            this.subUserReady.set(true)
+        }
+    });
 });
 
 //====================================Helper==================
@@ -61,7 +72,22 @@ addTmpl.helpers({
     }
 });
 
-editTmpl.helpers({});
+editTmpl.helpers({
+    subscriptionsReady(){
+        let instance = Template.instance();
+        console.log(instance.subUserReady.get());
+        return instance.subUserReady.get();
+    },
+    collection(){
+        return WB_CustomerType;
+    },
+    data(){
+        debugger;
+        let id = FlowRouter.getParam('customerTypeId');
+        return WB_CustomerType.findOne(id);
+    }
+
+});
 
 
 //====================================Event===================
@@ -82,6 +108,12 @@ indexTmpl.events({
             },
             null
         );
+    },
+    'dblclick tbody > tr' (event, instance) {
+
+        let dataTalbe = $(event.currentTarget).closest('table').DataTable();
+        let rowData = dataTalbe.row(event.currentTarget).data();
+        FlowRouter.go(`/waterBilling/customerType/${rowData._id}/edit`);
     }
 })
 

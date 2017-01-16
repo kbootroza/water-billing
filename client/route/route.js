@@ -44,10 +44,18 @@ waterBilling.route('/user-setting/:userId/edit', {
         _Main('wb_userSettingEdit');
     }
 });
+
+//Customer Type
 waterBilling.route('/customerType', {
     name: 'wb.customerType',
     action: function(query,params){
         _Main('wb_customerType');
+    }
+});
+waterBilling.route('/customerType/:customerTypeId/edit', {
+    name: 'wb.customerTypeEdit',
+    action: function(query,params) {
+        _Main('wb_customerTypeEdit');
     }
 });
 
