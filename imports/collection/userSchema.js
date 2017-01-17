@@ -43,10 +43,32 @@ export const UserSchema = new SimpleSchema({
     roles: {
         type: [String],
         label: 'Roles',
-      
+        autoform: {
+            multiple: true,
+            type: 'select',
+            options(){
+                return [
+                    {label: 'Setting',value: 'setting'},
+                    {label: 'Write',value: 'write'},
+                    {label: 'Read',value: 'read'},
+                    {label: 'Update',value: 'update'},
+                    {label: 'Remove',value: 'remove'},
+                ]
+            }
+        }
     },
     rolesBranch: {
         type: [String],
+        label: 'Roles Branch',
+        autoform: {
+            multiple: true,
+            type: 'select',
+            options(){
+                return [
+                    {label: 'Battambang',value: '02'},
+                ]
+            }
+        }
        
     }
 });
