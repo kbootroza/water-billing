@@ -1,0 +1,78 @@
+<template name="wb_meter">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-action">
+                {{>wb_meterAdd}}
+            </div>
+            {{> tabular table=dataTable selector=selector class="table striped"}}
+        </div>
+    </div>
+
+
+    <div id="wb_meterEditModal" class="modal">
+        {{#autoForm collection=collection id="wb_meterEdit" type="update" doc=updateDoc}}
+            <div class="modal-content">
+                <h4>Edit Meter
+                    <span class="right">
+                        <a class="grey-text modal-action modal-close">X</a>
+                    </span>
+                </h4>
+
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='size'}}
+                {{> afQuickField name='memo'}}
+                {{> afQuickField name='maintenanceFee'}}
+            </div>
+            <div class="modal-footer">
+                <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Save</a>-->
+                <button type="reset" class="btn waves-effect waves-light white black-text">Reset</button>
+                <button class="btn waves-effect waves-light purple darken-1" type="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+
+            </div>
+        {{/autoForm}}
+    </div>
+</template>
+
+<template name="wb_meterAdd">
+    <a class="waves-effect waves-light btn" href="#wb_meterAddModal">Add New</a>
+    {{#autoForm collection=collection id="wb_meterAdd" type="insert"}}
+        <!-- Modal Structure -->
+        <div id="wb_meterAddModal" class="modal">
+            <div class="modal-content">
+                <h4>New Meter
+                    <span class="right">
+                        <a class="grey-text modal-action modal-close">X</a>
+                    </span>
+                </h4>
+
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='size'}}
+                {{> afQuickField name='memo'}}
+                {{> afQuickField name='maintenanceFee'}}
+            </div>
+            <div class="modal-footer">
+                <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Save</a>-->
+                <button type="reset" class="btn waves-effect waves-light white black-text">Reset</button>
+                <button class="btn waves-effect waves-light purple darken-1" type="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+
+            </div>
+        </div>
+    {{/autoForm}}
+</template>
+<template name="wb_meterEdit">
+    </template>
+
+
+
+
+<template name="wb_meterOptions">
+    <!-- Dropdown Structure -->
+    <a href="#wb_meterEditModal" class="edit cursor-pointer"><i
+            class="material-icons red-text small">mode_edit</i></a>
+    <a class="remove cursor-pointer "><i class="material-icons red-text small">delete</i></a>
+</template>
+

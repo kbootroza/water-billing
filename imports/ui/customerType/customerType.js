@@ -31,7 +31,14 @@ addTmpl.onCreated(function () {
 
 });
 editTmpl.onCreated(function () {
-
+    this.subUserReady = new ReactiveVar(false);
+    this.autorun(()=>{
+        let id = FlowRouter.getParam('customerTypeId');
+        if(id){
+            this.subscription = Meteor.subscribe('wb_customerTypeById', {_id: id});
+            console.log(this.subscription);
+        }
+    });
 });
 
 
@@ -45,7 +52,11 @@ addTmpl.onRendered(function () {
 });
 
 editTmpl.onRendered(function () {
-
+    this.autorun(()=>{
+        if(this.subscription.ready()){
+            this.subUserReady.set(true)
+        }
+    });
 });
 
 //====================================Helper==================
@@ -61,7 +72,22 @@ addTmpl.helpers({
     }
 });
 
-editTmpl.helpers({});
+editTmpl.helpers({
+    subscriptionsReady(){
+        let instance = Template.instance();
+        console.log(instance.subUserReady.get());
+        return instance.subUserReady.get();
+    },
+    collection(){
+        return WB_CustomerType;
+    },
+    data(){
+        debugger;
+        let id = FlowRouter.getParam('customerTypeId');
+        return WB_CustomerType.findOne(id);
+    }
+
+});
 
 
 //====================================Event===================
@@ -74,20 +100,32 @@ indexTmpl.events({
             function () {
                 WB_CustomerType.remove(self._id, function (error) {
                     if (error) {
-                        alertify.error(error.message);
+                        // alertify.error(error.message);
+                        Materialize.toast(error.message, 3000, 'red rounded');
                     } else {
-                        alertify.success("Success");
+                        // alertify.success("Success");
+                        Materialize.toast('Successful', 3000, 'lime accent-4 rounded');
                     }
                 });
             },
             null
         );
+    },
+    'dblclick tbody > tr' (event, instance) {
+
+        let dataTalbe = $(event.currentTarget).closest('table').DataTable();
+        let rowData = dataTalbe.row(event.currentTarget).data();
+        FlowRouter.go(`/waterBilling/customerType/${rowData._id}/edit`);
     }
 })
 
 addTmpl.events({})
 
-editTmpl.events({})
+editTmpl.events({
+    'click .cancel'(e,t){
+        FlowRouter.go(`/waterBilling/customerType`);
+    }
+})
 
 
 //====================================Destroy=================
@@ -117,10 +155,10 @@ AutoForm.hooks({
         },
         onSuccess: function (formType, result) {
             $('#wb_customerTypeAddModal').modal('close');
-            Materialize.toast('Successful', 3000, 'lime accent-4 rounded')
+            Materialize.toast('Successful', 3000, 'lime accent-4 rounded');
         },
         onError: function (formType, error) {
-            Materialize.toast(error.message, 3000, 'red rounded')
+            Materialize.toast(error.message, 3000, 'red rounded');
         }
     },
     wb_customerTypeEdit: {
@@ -130,7 +168,8 @@ AutoForm.hooks({
             }
         },
         onSuccess: function (formType, result) {
-
+            FlowRouter.go(`/waterBilling/customerType`);
+            Materialize.toast('Successful', 3000, 'lime accent-4 rounded');
 
         },
         onError: function (formType, error) {

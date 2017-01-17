@@ -41,6 +41,10 @@
     "customerType": {
       "title": "Customer Type",
       "info": "Welcome to POS!"
+    },
+    "meteor": {
+      "title": "Meter",
+      "info": "Meter"
     }
   }
 }
