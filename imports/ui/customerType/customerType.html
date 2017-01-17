@@ -1,33 +1,40 @@
 <template name="wb_customerType">
+
     <div class="card">
         <div class="card-content">
             <div class="card-action">
                 {{>wb_customerTypeAdd}}
             </div>
-            {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
+            <div class="animated fadeIn">
+                {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
+            </div>
         </div>
     </div>
 </template>
 
 <template name="wb_customerTypeAdd">
-    <a class="waves-effect waves-light btn" href="#wb_customerTypeAddModal">Add New</a>
+
+    <a class="btn waves-effect waves-light blue" href="#wb_customerTypeAddModal">Add New</a>
+
 
     {{#autoForm collection=collection id="wb_customerTypeAdd" type="insert"}}
         <!-- Modal Structure -->
         <div id="wb_customerTypeAddModal" class="modal">
             <div class="modal-content">
-                <h4>Customer Type <span class="right"> <a href="#!" class="grey-text modal-action modal-close">X</a></span></h4>
-
+                <h4>Customer Type <span class="right"> <a href="#!" class="red-text modal-action modal-close"><i
+                        class="small material-icons">power_settings_new</i></a></span>
+                </h4>
                 {{> afQuickField name='name'}}
                 {{> afQuickField name='khName'}}
                 {{> afQuickField name='memo'}}
             </div>
             <div class="modal-footer">
                 <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Save</a>-->
-                <button type="reset" class="btn waves-effect waves-light white black-text">Reset</button>
                 <button class="btn waves-effect waves-light purple darken-1" type="submit">Submit
                     <i class="material-icons right">send</i>
                 </button>
+                <button type="reset" class="btn waves-effect waves-light white black-text">Reset<i class="material-icons right">restore</i></button>
+
 
             </div>
         </div>
@@ -40,16 +47,25 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-title">
-                        Edit Customer Type
+                        Edit Customer Type <span class="right"><i
+                            class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
                     </div>
                     {{#autoForm collection=collection id="wb_customerTypeEdit" doc=data type="update"}}
                         <div class="row">
-                            <div class="col-xs-6">
+                            <div class="col-xs-12">
                                 {{> afQuickField name='name'}}
                                 {{> afQuickField name='khName'}}
                                 {{> afQuickField name='memo'}}
                             </div>
+                            <div class="pull-right">
+                                <button type="reset" class="btn waves-effect waves-light white black-text">Reset <i class="material-icons right">restore</i>
+                                </button>
+                                <button class="btn waves-effect waves-light purple darken-1" type="submit">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
                         </div>
+
                     {{/autoForm}}
                 </div>
             </div>

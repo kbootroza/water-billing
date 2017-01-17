@@ -100,9 +100,11 @@ indexTmpl.events({
             function () {
                 WB_CustomerType.remove(self._id, function (error) {
                     if (error) {
-                        alertify.error(error.message);
+                        // alertify.error(error.message);
+                        Materialize.toast(error.message, 3000, 'red rounded');
                     } else {
-                        alertify.success("Success");
+                        // alertify.success("Success");
+                        Materialize.toast('Successful', 3000, 'lime accent-4 rounded');
                     }
                 });
             },
@@ -119,7 +121,11 @@ indexTmpl.events({
 
 addTmpl.events({})
 
-editTmpl.events({})
+editTmpl.events({
+    'click .cancel'(e,t){
+        FlowRouter.go(`/waterBilling/customerType`);
+    }
+})
 
 
 //====================================Destroy=================
@@ -149,10 +155,10 @@ AutoForm.hooks({
         },
         onSuccess: function (formType, result) {
             $('#wb_customerTypeAddModal').modal('close');
-            Materialize.toast('Successful', 3000, 'lime accent-4 rounded')
+            Materialize.toast('Successful', 3000, 'lime accent-4 rounded');
         },
         onError: function (formType, error) {
-            Materialize.toast(error.message, 3000, 'red rounded')
+            Materialize.toast(error.message, 3000, 'red rounded');
         }
     },
     wb_customerTypeEdit: {
@@ -162,7 +168,8 @@ AutoForm.hooks({
             }
         },
         onSuccess: function (formType, result) {
-
+            FlowRouter.go(`/waterBilling/customerType`);
+            Materialize.toast('Successful', 3000, 'lime accent-4 rounded');
 
         },
         onError: function (formType, error) {
