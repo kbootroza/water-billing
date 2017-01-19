@@ -1,6 +1,5 @@
 <head>
     <title>Water-Billing</title>
-    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 </head>
 
 <template name="MainLayout">
@@ -65,7 +64,7 @@
             <li>
                 <a class="dropdown-button" href="#!" data-activates="dropdown1">
                     {{#if currentUser}}
-                        {{ currentUser.profile.username }}
+                        {{ currentUser.username }}
                         <i class="material-icons right">arrow_drop_down</i>
                     {{/if}}
 

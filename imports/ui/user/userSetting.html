@@ -41,19 +41,21 @@
             <div class="card-content">
                 <div class="card-title">
                     Edit User
+                    <span class="right"><a href="/waterBilling/user-setting"><i class="material-icons right">arrow_back</i></a></span>
                 </div>
                 {{#autoForm schema=schema id="wb_userEdit" doc=data type="method-update" meteormethod="wb.updateUser" singleMethodArgument=true}}
                 <div class="row">
                     <div class="col-xs-6">
-                        {{> afQuickField name='profile.username'}} 
+                        {{> afQuickField name='profile.fullName'}} 
                         {{> afQuickField name='username'}} 
                         {{> afQuickField name='email'}} 
-                        {{> afQuickField
-                        name='password' type="password"}}
+                        {{> afQuickField name='password' type="password"}}
                         {{> afQuickField name='confirmPassword' type="password"}}
                     </div>
                     <div class="col-xs-6">
-                        {{> afQuickField name='roles' size=8}} {{> afQuickField name='rolesBranch' size=6}}
+                        {{> afQuickField name='roles' }} 
+                        {{> afQuickField name='rolesBranch'}}
+                        {{> afQuickField name='areaId' value=area type="hidden"}}
                     </div>
                     {{>wb_actionEdit}}
                 </div>

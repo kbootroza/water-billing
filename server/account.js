@@ -26,6 +26,5 @@ Accounts.onCreateUser((options, user) => {
     var splitEmail = user.emails[0].address.split('@')
     user.profile.username = `${splitEmail[0]}`
   }
-  console.log(user);
   return user
 })

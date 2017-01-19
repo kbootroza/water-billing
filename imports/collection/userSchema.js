@@ -9,7 +9,7 @@ export const UserSchema = new SimpleSchema({
         type: Object,
         label: 'Profile'
     },
-    'profile.username': {
+    'profile.fullName': {
         type: String,
         label: 'Full Name'
     },
@@ -28,7 +28,8 @@ export const UserSchema = new SimpleSchema({
     password: {
         type: String,
         label: 'Password',
-        min: 6
+        min: 6,
+        optional: true
     },
     confirmPassword: {
         type: String,
@@ -38,7 +39,9 @@ export const UserSchema = new SimpleSchema({
             if (this.value !== this.field('password').value) {
                 return "passwordMismatch";
             }
-        }
+        },
+        optional: true
+        
     },
     roles: {
         type: [String],
@@ -70,5 +73,9 @@ export const UserSchema = new SimpleSchema({
             }
         }
        
+    },
+    areaId: {
+        type: String,
+        optional: true
     }
 });

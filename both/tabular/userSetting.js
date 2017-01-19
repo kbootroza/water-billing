@@ -4,8 +4,9 @@ Meteor.isClient && require('../../imports/ui/user/userSetting.html');
 export const UserSettingTabular = new Tabular.Table({
     name: "wb.userSettingTabular",
     collection: Meteor.users,
+    responsive: true,
     columns: [
-        {data: "profile.username", title: "Username"},
+        {data: "username", title: "Username"},
         {
             data: "emails",
             title: "Email",
