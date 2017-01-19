@@ -1,10 +1,9 @@
-import { Template } from 'meteor/templating';
-import { Meteor } from 'meteor/meteor';
 
 //Collection
 import {WB_CustomerType} from '../../imports/collection/customerType'
 
-Meteor.isClient && require('../../imports/ui/customerType/customerType.html');
+Meteor.isClient && require('../../imports/ui/actionButtons/actionButton.html');
+
 export const CustomerTypeTabular = new Tabular.Table({
     name: "wb.customerTypeTabular",
     collection: WB_CustomerType,
@@ -17,7 +16,7 @@ export const CustomerTypeTabular = new Tabular.Table({
         {data: "khName", title: "KH Name"},
         {data: "memo", title: "Memo"},
         {
-            tmpl: Meteor.isClient && Template.wb_customerTypeOptions
+            tmpl: Meteor.isClient && Template.wb_actionRemove
         }
     ]
 });

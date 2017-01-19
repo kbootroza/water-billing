@@ -9,11 +9,29 @@
 </template>
 <template name="wb_actionEdit">
     <span class="right">
-    <button type="reset" class="btn waves-effect waves-light white black-text"><i class="material-icons right">restore</i>Reset</button>    
-    <button class="waves-effect waves-light btn purple darken-1"><i class="material-icons right">update</i>Update</button>
+    <button type="reset" class="btn waves-effect waves-light white black-text"><i
+            class="material-icons right">restore</i>Reset</button>
+    <button class="waves-effect waves-light btn purple darken-1" type="submit"><i
+            class="material-icons right">update</i>Update</button>
     </span>
 </template>
 
 <template name="wb_actionRemove">
     <a class="remove cursor-pointer"><i class="material-icons red-text small">delete</i></a>
+</template>
+
+<template name="wb_actionEditRemove">
+    <div class="right row">
+        <div class="col-xs-12">
+            <div class="col s6">
+                <a class="edit cursor-pointer right"><i class="material-icons blue-text small">mode_edit</i></a>
+            </div>
+            <div class="col s6">
+                <a class="remove cursor-pointer left"><i class="material-icons red-text small">delete</i></a>
+            </div>
+        </div>
+        <div class="">
+
+        </div>
+    </div>
 </template>

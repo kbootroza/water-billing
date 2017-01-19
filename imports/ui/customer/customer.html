@@ -1,33 +1,148 @@
 <template name="wb_customer">
-    <div class="card">
 
+    <div class="card">
         <div class="card-content">
             <div class="card-action">
-                {{>wb_customerAdd}}
+                <a class="btn waves-effect waves-light blue add">Add New</a>
             </div>
-            <div class="card-title">
-                <h4>Welcome Customer</h4>
+            <div class="animated fadeIn">
+                {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
             </div>
         </div>
     </div>
 </template>
 
+
 <template name="wb_customerAdd">
-    <a class="waves-effect waves-light btn" href="#wb_customerAdd">Add New</a>
-    <!-- Modal Structure -->
-    <div id="wb_customerAdd" class="modal">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    <div class="container animated fadeIn">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">
+                    Add Customer<span class="right"><i
+                        class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
+                </div>
+                {{#autoForm collection=collection id="wb_customerAdd" type="insert"}}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col s6">
+                                {{> afQuickField name='name'}}
+                                {{> afQuickField name='khName'}}
+                                {{> afQuickField name='dpc'}}
+                                {{> afQuickField name='district'}}
+                                {{> afQuickField name='quartier'}}
+                            </div>
+                            <div class="col s6">
+                                {{> afQuickField name='operationType'}}
+                                {{> afQuickField name='streetNo'}}
+                                {{> afQuickField name='address'}}
+                                {{> afQuickField name='phoneNumber'}}
+                                {{> afQuickField name='contact'}}
+                            </div>
+                        </div>
+                        {{> wb_actionAdd}}
+                    </div>
+
+                {{/autoForm}}
+            </div>
         </div>
     </div>
 </template>
 
 <template name="wb_customerEdit">
+    {{#if subscriptionsReady}}
+        <div class="container animated fadeIn">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">
+                        Add Customer<span class="right"><i
+                            class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
+                    </div>
+                    {{#autoForm collection=collection id="wb_customerEdit" doc=data type="update"}}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="col s6">
+                                    {{> afQuickField name='name'}}
+                                    {{> afQuickField name='khName'}}
+                                    {{> afQuickField name='dpc'}}
+                                    {{> afQuickField name='district'}}
+                                    {{> afQuickField name='quartier'}}
+                                </div>
+                                <div class="col s6">
+                                    {{> afQuickField name='operationType'}}
+                                    {{> afQuickField name='streetNo'}}
+                                    {{> afQuickField name='address'}}
+                                    {{> afQuickField name='phoneNumber'}}
+                                    {{> afQuickField name='contact'}}
+                                </div>
+                            </div>
+                            {{> wb_actionEdit}}
+                        </div>
 
+                    {{/autoForm}}
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div class="progress ">
+            <div class="indeterminate "></div>
+        </div>
+
+    {{/if}}
+</template>
+
+
+<template name="wb_customerDetail">
+    <div class="container animated fadeIn">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">
+                    Customer Detail<span class="right"><i
+                        class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
+                </div>
+
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s3"><a class="active" href="#test1">Test 1</a></li>
+                            <li class="tab col s3"><a href="#test2">Test 2</a></li>
+                            <li class="tab col s3"><a href="#test4">Test 4</a></li>
+                        </ul>
+                    </div>
+                    {{#if subscriptionsReady}}
+                        {{#with data}}
+                            <div id="test1" class="col s12 row">
+                                <div class="col-xs-12">
+                                    <div class="col s6">
+                                        {{name}}
+                                        {{khName}}
+                                        {{dpc}}
+                                        {{district}}
+                                        {{quartier}}
+                                    </div>
+                                    <div class="col s6">
+                                        {{operationType}}
+                                        {{streetNo}}
+                                        {{address}}
+                                        {{phoneNumber}}
+                                        {{contact}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="test2" class="col s12">Test 2</div>
+                            <div id="test4" class="col s12">Test 4</div>
+                        {{/with}}
+                    {{else}}
+                        <div class="progress ">
+                            <div class="indeterminate "></div>
+                        </div>
+
+                    {{/if}}
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </template>
 
