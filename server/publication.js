@@ -2,14 +2,6 @@ import {Meteor} from 'meteor/meteor';
 import {WB_CustomerType} from "../imports/collection/customerType";
 import {WB_Customer} from "../imports/collection/customer";
 
-Meteor.publish('meteorUser', function meteorUser({_id}){
-    if(this.userId){
-        let user =  Meteor.users.find({_id});
-        return user;
-    }
-    return this.ready();
-});
-
 //Customer Type
 Meteor.publish('wb_customerTypeById', function meteorUser({_id}){
     if(this.userId){
