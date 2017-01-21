@@ -30,21 +30,22 @@ WB_Customer.schema = new SimpleSchema({
     district: {
         type: String,
         label: "District",
-        optional: true
+        optional: true,
+        // autoform: {
+        //     type: "select2",
+        //     options: function () {
+        //         // return SelectOpts.currency(false);
+        //     }
+        // }
     },
     quartier: {
         type: String,
         label: "Quartier",
         optional: true
     },
-    operationType: {
+    operationCode: {
         type: String,
-        label: "Operation Type",
-        optional: true
-    },
-    streetNo: {
-        type: String,
-        label: "Street No",
+        label: "Operation Code",
         optional: true
     },
     streetNo: {

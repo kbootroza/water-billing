@@ -5,6 +5,13 @@ import '../../imports/ui/customerType/customerType';
 import '../../client/layout';
 import '../../imports/ui/user/userSetting';
 import '../../imports/ui/meter/meter';
+import '../../imports/ui/block/block';
+import '../../imports/ui/category/category';
+import '../../imports/ui/class/class';
+import '../../imports/ui/district/district';
+import '../../imports/ui/operationCode/operationCode';
+import '../../imports/ui/position/position';
+import '../../imports/ui/quartier/quartier';
 
 
 
@@ -91,5 +98,99 @@ waterBilling.route('/meter', {
     name: 'wb.meter',
     action: function(query,params){
         _Main('wb_meter');
+    }
+});
+
+//Block
+waterBilling.route('/block', {
+    name: 'wb.block',
+    action: function(query,params){
+        _Main('wb_block');
+    }
+});
+waterBilling.route('/block/:blockId/edit', {
+    name: 'wb.blockEdit',
+    action: function(query,params) {
+        _Main('wb_blockEdit');
+    }
+});
+
+//Block
+waterBilling.route('/category', {
+    name: 'wb.category',
+    action: function(query,params){
+        _Main('wb_category');
+    }
+});
+waterBilling.route('/category/:categoryId/edit', {
+    name: 'wb.categoryEdit',
+    action: function(query,params) {
+        _Main('wb_categoryEdit');
+    }
+});
+
+//Class
+waterBilling.route('/class', {
+    name: 'wb.class',
+    action: function(query,params){
+        _Main('wb_class');
+    }
+});
+waterBilling.route('/class/:classId/edit', {
+    name: 'wb.classEdit',
+    action: function(query,params) {
+        _Main('wb_classEdit');
+    }
+});
+//Class
+waterBilling.route('/district', {
+    name: 'wb.district',
+    action: function(query,params){
+        _Main('wb_district');
+    }
+});
+waterBilling.route('/district/:districtId/edit', {
+    name: 'wb.districtEdit',
+    action: function(query,params) {
+        _Main('wb_districtEdit');
+    }
+});
+//operationCode
+waterBilling.route('/operationCode', {
+    name: 'wb.operationCode',
+    action: function(query,params){
+        _Main('wb_operationCode');
+    }
+});
+waterBilling.route('/operationCode/:operationCodeId/edit', {
+    name: 'wb.operationCodeEdit',
+    action: function(query,params) {
+        _Main('wb_operationCodeEdit');
+    }
+});
+//position
+waterBilling.route('/position', {
+    name: 'wb.position',
+    action: function(query,params){
+        _Main('wb_position');
+    }
+});
+waterBilling.route('/position/:positionId/edit', {
+    name: 'wb.positionEdit',
+    action: function(query,params) {
+        _Main('wb_positionEdit');
+    }
+});
+//quartier
+waterBilling.route('/quartier', {
+    name: 'wb.quartier',
+    action: function(query,params){
+        _Main('wb_quartier');
+    }
+});
+waterBilling.route('/quartier/:quartierId/edit', {
+    name: 'wb.quartierEdit',
+    action: function(query,params) {
+        _Main('wb_quartierEdit');
     }
 });

@@ -3,7 +3,14 @@
     "sidebarMenu": {
       "home": "Home",
       "customer": "Customer",
-      "customerType": "Customer Type"
+      "customerType": "Customer Type",
+      "block": "Block",
+      "category": "Category",
+      "class": "Class",
+      "district": "District",
+      "operationCode": "Operation Code",
+      "position": "Position",
+      "quartier": "Quartier"
     },
     "home": {
       "title": "Home",
@@ -40,6 +47,34 @@
     },
     "customerType": {
       "title": "Customer Type",
+      "info": "Welcome to POS!"
+    },
+    "block": {
+      "title": "Block",
+      "info": "Welcome to POS!"
+    },
+    "category": {
+      "title": "Category",
+      "info": "Welcome to POS!"
+    },
+    "class": {
+      "title": "Class",
+      "info": "Welcome to POS!"
+    },
+    "district": {
+      "title": "District",
+      "info": "Welcome to POS!"
+    },
+    "operationCode": {
+      "title": "Operation Code",
+      "info": "Welcome to POS!"
+    },
+    "position": {
+      "title": "Position",
+      "info": "Welcome to POS!"
+    },
+    "quartier": {
+      "title": "Quartier",
       "info": "Welcome to POS!"
     },
     "meteor": {

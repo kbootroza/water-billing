@@ -8,22 +8,22 @@ import {moment} from 'meteor/momentjs:moment';
 
 
 
-export const WB_CustomerType=new Mongo.Collection("wb_customerType");
+export const WB_Category=new Mongo.Collection("wb_category");
 
-WB_CustomerType.schema = new SimpleSchema({
+WB_Category.schema = new SimpleSchema({
 
     code: {
         type: String,
         label: "Code"
     },
+    name: {
+        type: String,
+        label: "Name"
+    },
     description: {
         type: String,
         label: "Description"
-    },
-    billingCycle: {
-        type: Number,
-        label : "Billing Cycle (Months)"
-    },
+    }
 
 });
 /**
@@ -31,7 +31,7 @@ WB_CustomerType.schema = new SimpleSchema({
  */
 
 Meteor.startup(function () {
-    WB_CustomerType.attachSchema(WB_CustomerType.schema);
+    WB_Category.attachSchema(WB_Category.schema);
 });
 
 
