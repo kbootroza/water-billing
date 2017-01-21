@@ -1,11 +1,27 @@
-import {WB_CustomerType} from '../imports/collection/customerType';
-import {WB_Customer} from '../imports/collection/customer';
 import {WB_Meters} from '../imports/collection/meter';
+
+
+import {WB_CustomerType} from "../imports/collection/customerType";
+import {WB_Customer} from "../imports/collection/customer";
+import {WB_Block} from "../imports/collection/block";
+import {WB_Category} from "../imports/collection/category";
+import {WB_Class} from "../imports/collection/class";
+import {WB_District} from "../imports/collection/district";
+import {WB_OperationCode} from "../imports/collection/operationCode";
+import {WB_Position} from "../imports/collection/position";
+import {WB_Quartier} from "../imports/collection/quartier";
 
 
 Security.permit(['insert', 'update', 'remove']).collections([
     WB_CustomerType,
     WB_Customer,
-    WB_Meters
+    WB_Meters,
+    WB_Block,
+    WB_Category,
+    WB_Class,
+    WB_District,
+    WB_OperationCode,
+    WB_Position,
+    WB_Quartier
 ]).apply();
 

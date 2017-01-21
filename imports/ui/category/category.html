@@ -1,9 +1,8 @@
-<template name="wb_customerType">
-
+<template name="wb_category">
     <div class="card">
         <div class="card-content">
             <div class="card-action">
-                {{>wb_customerTypeAdd}}
+                {{>wb_categoryAdd}}
             </div>
             <div class="animated fadeIn">
                 {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
@@ -12,21 +11,21 @@
     </div>
 </template>
 
-<template name="wb_customerTypeAdd">
+<template name="wb_categoryAdd">
 
-    <a class="btn waves-effect waves-light blue" href="#wb_customerTypeAddModal">Add New</a>
-    <span class="right blue-text"><h4>{{_ "wb.customerType.title"}}</h4></span>
+    <a class="btn waves-effect waves-light blue" href="#wb_categoryAddModal">Add New</a>
+    <span class="right blue-text"><h4>{{_ "wb.category.title"}}</h4></span>
 
-    {{#autoForm collection=collection id="wb_customerTypeAdd" type="insert"}}
+    {{#autoForm collection=collection id="wb_categoryAdd" type="insert"}}
         <!-- Modal Structure -->
-        <div id="wb_customerTypeAddModal" class="modal">
+        <div id="wb_categoryAddModal" class="modal">
             <div class="modal-content">
-                <h5>Add Customer Type <span class="right"> <a href="#!" class="red-text modal-action modal-close"><i
+                <h5>Add Category <span class="right"> <a href="#!" class="red-text modal-action modal-close"><i
                         class="small material-icons">close</i></a></span>
                 </h5>
                 {{> afQuickField name='code'}}
+                {{> afQuickField name='name'}}
                 {{> afQuickField name='description'}}
-                {{> afQuickField name='billingCycle'}}
             </div>
             <div class="modal-footer">
                 {{> wb_actionAdd}}
@@ -35,21 +34,21 @@
     {{/autoForm}}
 </template>
 
-<template name="wb_customerTypeEdit">
+<template name="wb_categoryEdit">
     {{#if subscriptionsReady}}
         <div class="container animated fadeIn">
             <div class="card">
                 <div class="card-content">
                     <div class="card-title">
-                        Edit Customer Type <span class="right"><i
+                        <i class="material-icons">build</i> Edit Category <span class="right"><i
                             class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
                     </div>
-                    {{#autoForm collection=collection id="wb_customerTypeEdit" doc=data type="update"}}
+                    {{#autoForm collection=collection id="wb_categoryEdit" doc=data type="update"}}
                         <div class="row">
                             <div class="col-xs-12">
                                 {{> afQuickField name='code'}}
+                                {{> afQuickField name='name'}}
                                 {{> afQuickField name='description'}}
-                                {{> afQuickField name='billingCycle'}}
                             </div>
                            {{> wb_actionEdit}}
                         </div>

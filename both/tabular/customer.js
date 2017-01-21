@@ -16,7 +16,7 @@ export const CustomerTabular = new Tabular.Table({
         {data: "khName", title: "KH Name"},
         {data: "district", title: "District"},
         {data: "quartier", title: "Quartier"},
-        {data: "operationType", title: "Operation Type"},
+        {data: "operationCode", title: "Operation Code"},
         {data: "streetNo", title: "Street No"},
         {data: "address", title: "Address"},
         {data: "phoneNumber", title: "Phone Number"},

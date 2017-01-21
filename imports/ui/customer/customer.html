@@ -4,6 +4,7 @@
         <div class="card-content">
             <div class="card-action">
                 <a class="btn waves-effect waves-light blue add">Add New</a>
+                <span class="right blue-text"><h4>{{_ "wb.customer.title"}}</h4></span>
             </div>
             <div class="animated fadeIn">
                 {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
@@ -20,6 +21,7 @@
                 <div class="card-title">
                     Add Customer<span class="right"><i
                         class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
+
                 </div>
                 {{#autoForm collection=collection id="wb_customerAdd" type="insert"}}
                     <div class="row">
