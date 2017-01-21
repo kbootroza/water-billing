@@ -4,36 +4,6 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Roles} from  'meteor/alanning:roles';
 import 'lodash';
 //
-// Validate schema
-let validateSchema = new SimpleSchema({
-    username: {
-        type: String
-    },
-    email: {
-        type: String
-    },
-    password: {
-        type: String
-    },
-    confirmPassword: {
-        type: String
-    },
-    profile: {
-        type: Object
-    },
-    'profile.name': {
-        type: String
-    },
-    'profile.approved': {
-        type: Boolean
-    },
-    roles: {
-        type: [String]
-    },
-    rolesArea: {
-        type: [String]
-    }
-});
 //
 // // Insert
 export const insertUser = new ValidatedMethod({
@@ -41,25 +11,21 @@ export const insertUser = new ValidatedMethod({
     validate: null,
     run(doc) {
         if (!this.isSimulation) {
-            // if (!Roles.userIsInRole(this.userId, ['super', 'admin'], 'Core')) {
-            //     throw new Meteor.Error("403", "Access denied");
-            // }
+            if (doc) {
+                doc.profile.roles = doc.roles;
+                doc.profile.areaId = doc.areaId;
+                doc.profile.rolesBranch = doc.rolesBranch || [];
+                let userId = Accounts.createUser({
+                    username: doc.username,
+                    email: doc.email,
+                    password: doc.password,
+                    profile: doc.profile,
+                    rolesBranch: doc.rolesBranch
+                });
 
-            // Add account'
-            doc.profile.roles = doc.roles || [];
-            doc.profile.areaId = doc.areaId;
-            doc.profile.rolesBranch = doc.rolesBranch || [];
-            let userId = Accounts.createUser({
-                username: doc.username,
-                email: doc.email,
-                password: doc.password,
-                profile: doc.profile,
-                rolesBranch: doc.rolesBranch
-            });
-
-            // Add roles
-            Roles.addUsersToRoles(userId,
-                doc.roles, doc.areaId)
+                // Add roles
+                Roles.addUsersToRoles(userId, doc.roles, 'wb')
+            }
         }
     }
 });
@@ -74,7 +40,6 @@ export const updateUser = new ValidatedMethod({
             //     throw new Meteor.Error("403", "Access denied");
             // }
             let doc = modifier.$set;
-            console.log(doc);
             // Update account
             Meteor.users.update(_id, {
                 $set: {
@@ -82,18 +47,19 @@ export const updateUser = new ValidatedMethod({
                     username: doc.username,
                     profile: {
                         approved: doc['profile.approved'],
-                        status: doc.status
+                        status: doc['profile.status']
                     },
                     rolesBranch: doc.rolesBranch,
-                    roles: {}
+                    areaId: doc.areaId
                 }
             });
             // Update password
-            if (doc.password && doc.password != '') {
+            console.log(typeof  doc.roles);
+            if (doc.password != 'oldPassword') {
                 Accounts.setPassword(_id, doc.password);
             }
             // Update roles
-            Roles.addUsersToRoles(_id, doc.roles, doc.areaId)
+            Roles.addUsersToRoles(_id, doc.roles, 'wb')
         }
     }
 });

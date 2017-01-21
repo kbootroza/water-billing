@@ -72,7 +72,6 @@ editTmpl.onCreated(function () {
                 if(result) {
                     this.userData.set(result);
                     this.subUserReady.set(true);
-                    console.log(result);
                 }
             });
         }

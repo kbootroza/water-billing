@@ -16,7 +16,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-title">
-                    Add User
+                    <i class="material-icons">add</i> Add User
                     <span class="right"><a href="/waterBilling/user-setting"><i
                             class="material-icons right">arrow_back</i></a></span>
                 </div>
@@ -30,15 +30,25 @@
                             {{> afQuickField name='confirmPassword' type="password"}}
                         </div>
                         <div class="col s6">
-                            {{> afQuickField name='roles' }}
-                            {{> afQuickField name='rolesBranch'}}
-                            {{> afQuickField name='areaId' value=area type="hidden"}}
+                            <label for="">Roles</label>
+                            {{> afQuickField name='roles' size=10}}
                             <div class="row">
-                                <div class="col s6">{{> afQuickField name='profile.approved'}}</div>
-                                <div class="col s6">{{> afQuickField name='profile.status'}}</div>
-                            </div>
+                                <div class="col s6">
+                                    <label for="">Roles Branch</label>
+                                    {{> afQuickField name='rolesBranch' size=10}}
+                                </div>
 
+                            </div>
+                            <div class="row">
+                                <div class="col s6">
+                                    {{> afQuickField name='profile.status'}}
+                                    {{> afQuickField name='areaId' value=area type="hidden"}}
+                                    {{> afQuickField name='profile.approved'}}
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="row">
                         {{>wb_actionAdd}}
                     </div>
                 {{/autoForm}}
@@ -52,8 +62,9 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-title">
-                        Edit User
-                        <span class="right"><a href="/waterBilling/user-setting"><i class="material-icons right">arrow_back</i></a></span>
+                        <i class="material-icons">build</i> Edit User
+                        <span class="right"><a href="/waterBilling/user-setting"><i
+                                class="material-icons right">arrow_back</i></a></span>
                     </div>
                     {{#autoForm schema=schema id="wb_userEdit" doc=data type="method-update"
                                 meteormethod="wb.updateUser" singleMethodArgument=true}}
@@ -65,14 +76,24 @@
                                 {{> afQuickField name='confirmPassword' type="password"}}
                             </div>
                             <div class="col s6">
-                                {{> afQuickField name='roles' }}
-                                {{> afQuickField name='rolesBranch'}}
-                                {{> afQuickField name='areaId' value=area type="hidden"}}
+                                <label for="">Roles</label>
+                                {{> afQuickField name='roles' size=10}}
                                 <div class="row">
-                                    <div class="col s6">{{> afQuickField name='profile.approved'}}</div>
-                                    <div class="col s6">{{> afQuickField name='profile.status'}}</div>
+                                    <div class="col s6">
+                                        <label for="">Roles Branch</label>
+                                        {{> afQuickField name='rolesBranch' size=10}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s6">
+                                        {{> afQuickField name='profile.status'}}
+                                        {{> afQuickField name='areaId' value=area type="hidden"}}
+                                        {{> afQuickField name='profile.approved'}}
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             {{>wb_actionEdit}}
                         </div>
                     {{/autoForm}}

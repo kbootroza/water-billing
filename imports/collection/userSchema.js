@@ -42,7 +42,6 @@ export const UserSchema = new SimpleSchema({
         type: String,
         label: 'Password',
         min: 6,
-        optional: true
     },
     confirmPassword: {
         type: String,
@@ -53,15 +52,14 @@ export const UserSchema = new SimpleSchema({
                 return "passwordMismatch";
             }
         },
-        optional: true
 
     },
     roles: {
         type: [String],
         label: 'Roles',
         autoform: {
-            multiple: true,
-            type: 'select',
+            // multiple: true,
+            type: 'select-checkbox-inline',
             options(){
                 return [
                     {label: 'Setting', value: 'setting'},
@@ -77,8 +75,7 @@ export const UserSchema = new SimpleSchema({
         type: [String],
         label: 'Roles Branch',
         autoform: {
-            multiple: true,
-            type: 'select',
+            type: 'select-checkbox-inline',
             options(){
                 return [
                     {label: 'Battambang', value: '02'},
