@@ -24,6 +24,7 @@ callback-hook@1.0.10
 cfs:http-methods@0.0.32
 check@1.2.4
 coffeescript@1.0.17
+cottz:flow-router-query@0.0.4
 ddp@1.2.5
 ddp-client@1.2.9
 ddp-common@1.2.8
@@ -71,6 +72,7 @@ momentjs:moment@2.10.6
 mongo@1.1.14
 mongo-id@1.0.6
 natestrauser:animate-css@3.5.1
+natestrauser:select2@4.0.3
 nicolaslopezj:tabular-materialize@1.4.1_4
 npm-bcrypt@0.8.7_1
 npm-mongo@2.2.16_1

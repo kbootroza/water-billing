@@ -14,13 +14,15 @@ export const insertUser = new ValidatedMethod({
             if (doc) {
                 doc.profile.roles = doc.roles;
                 doc.profile.areaId = doc.areaId;
-                doc.profile.rolesBranch = doc.rolesBranch || [];
+                doc.profile.rolesBranch = doc.rolesBranch;
+                doc.profile.rolesArea = doc.rolesArea || [];
                 let userId = Accounts.createUser({
                     username: doc.username,
                     email: doc.email,
                     password: doc.password,
                     profile: doc.profile,
-                    rolesBranch: doc.rolesBranch
+                    rolesBranch: doc.rolesBranch,
+                    rolesArea: doc.rolesArea
                 });
 
                 // Add roles
@@ -50,11 +52,11 @@ export const updateUser = new ValidatedMethod({
                         status: doc['profile.status']
                     },
                     rolesBranch: doc.rolesBranch,
+                    rolesArea: doc.rolesArea,
                     areaId: doc.areaId
                 }
             });
             // Update password
-            console.log(typeof  doc.roles);
             if (doc.password != 'oldPassword') {
                 Accounts.setPassword(_id, doc.password);
             }

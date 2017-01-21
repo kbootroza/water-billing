@@ -5,11 +5,11 @@ Accounts.onCreateUser((options, user) => {
         }
         if (options.profile) {
             user.profile = {};
-            console.log(options);
             user.profile.status = options.profile.status;
             user.profile.approved = options.profile.approved;
             user.areaId = options.profile.areaId;
             user.rolesBranch = options.rolesBranch;
+            user.rolesArea = options.rolesArea;
             Roles.addUsersToRoles(user._id, options.profile.roles, options.profile.areaId)
         }
         if (_.isUndefined(user.profile)) {
