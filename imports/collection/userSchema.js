@@ -9,9 +9,22 @@ export const UserSchema = new SimpleSchema({
         type: Object,
         label: 'Profile'
     },
-    'profile.fullName': {
+    'profile.approved': {
+        type: Boolean,
+        label: 'Approved'
+    },
+    'profile.status': {
         type: String,
-        label: 'Full Name'
+        optional: true,
+        autoform: {
+            type: 'select',
+            options(){
+                return [
+                    {label: 'Enable', value: 'enable'},
+                    {label: 'Disable', value: 'disable'}
+                ]
+            }
+        }
     },
     username: {
         type: String,
@@ -29,7 +42,6 @@ export const UserSchema = new SimpleSchema({
         type: String,
         label: 'Password',
         min: 6,
-        optional: true
     },
     confirmPassword: {
         type: String,
@@ -40,22 +52,21 @@ export const UserSchema = new SimpleSchema({
                 return "passwordMismatch";
             }
         },
-        optional: true
-        
+
     },
     roles: {
         type: [String],
         label: 'Roles',
         autoform: {
-            multiple: true,
-            type: 'select',
+            // multiple: true,
+            type: 'select-checkbox-inline',
             options(){
                 return [
-                    {label: 'Setting',value: 'setting'},
-                    {label: 'Write',value: 'write'},
-                    {label: 'Read',value: 'read'},
-                    {label: 'Update',value: 'update'},
-                    {label: 'Remove',value: 'remove'},
+                    {label: 'Setting', value: 'setting'},
+                    {label: 'Write', value: 'write'},
+                    {label: 'Read', value: 'read'},
+                    {label: 'Update', value: 'update'},
+                    {label: 'Remove', value: 'remove'},
                 ]
             }
         }
@@ -64,15 +75,14 @@ export const UserSchema = new SimpleSchema({
         type: [String],
         label: 'Roles Branch',
         autoform: {
-            multiple: true,
-            type: 'select',
+            type: 'select-checkbox-inline',
             options(){
                 return [
-                    {label: 'Battambang',value: '02'},
+                    {label: 'Battambang', value: '02'},
                 ]
             }
         }
-       
+
     },
     areaId: {
         type: String,

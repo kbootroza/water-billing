@@ -9,14 +9,6 @@ import {WB_OperationCode} from "../imports/collection/operationCode";
 import {WB_Position} from "../imports/collection/position";
 import {WB_Quartier} from "../imports/collection/quartier";
 
-Meteor.publish('meteorUser', function meteorUser({_id}){
-    if(this.userId){
-        let user =  Meteor.users.find({_id});
-        return user;
-    }
-    return this.ready();
-});
-
 //Customer Type
 Meteor.publish('wb_customerTypeById', function wb_customerTypeById({_id}){
     if(this.userId){
