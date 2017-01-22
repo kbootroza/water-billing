@@ -3,10 +3,28 @@
         <div class="card">
             <div class="card-content">
                 {{#autoForm schema=schema id="area"}}
-                    {{>afQuickField name="area" options=areaOptions}}
-                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">send</i>GO</button>
+                    <div class="row">
+                        {{#if fetchGeoDataReady}}
+                            <div class="col s6">
+                                {{>afQuickField name="rolesBranch" options=rolesBranchOptions}}
+                            </div>
+                            <div class="col s6">
+                                {{>afQuickField name="rolesArea" options=rolesAreaOptions}}
+
+                            </div>
+                        {{else}}
+                            <div class="col s12">
+                                <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>
+                            </div>
+                        {{/if}}
+
+                    </div>
+                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">send</i>GO
+                    </button>
                 {{/autoForm}}
             </div>
         </div>
-   </div>
+    </div>
 </template>

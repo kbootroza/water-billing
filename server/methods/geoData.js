@@ -12,11 +12,58 @@ Meteor.methods({
     fetchDistricts(adminId1){
         let list = [];
         let districts = JSON.parse(Assets.getText('geoData/district.json'));
-        districts.map(function(o){
-            if(o.properties.ADMIN_ID1 == adminId1){
+        districts.map(function (o) {
+            if (o.properties.ADMIN_ID1 == adminId1) {
                 list.push({label: `${o.properties.NAME2}`, value: `${o.properties.ADMIN_ID2}`});
             }
-        })
+        });
+        return list;
+    },
+    fetchRolesBranch(userId){
+        let list = [];
+        if (Meteor.userId()) {
+            let provinces = JSON.parse(Assets.getText('geoData/province.json'));
+            let currentUser = Meteor.users.findOne(userId);
+            if (!userId || currentUser && currentUser.username == 'super') {
+                provinces.forEach(function (province) {
+                    list.push({label: `${province.properties.NAME1}`, value: `${province.properties.ADMIN_ID1}`});
+                });
+            } else {
+                if (currentUser) {
+                    let province = provinces.find(o => o.properties.ADMIN_ID1 == currentUser.rolesBranch);
+                    if (province) {
+                        list.push({label: `${province.properties.NAME1}`, value: `${province.properties.ADMIN_ID1}}`});
+                    }
+                }
+            }
+        }
+        return list;
+    },
+    fetchRolesArea(userId, adminId1){
+        let list = [];
+        if (Meteor.userId()) {
+            let districts = JSON.parse(Assets.getText('geoData/district.json'));
+            let currentUser = Meteor.users.findOne(userId);
+            if (!userId || currentUser && currentUser.username == 'super') {
+                districts.map(function (o) {
+                    if(adminId1) {
+                        if (o.properties.ADMIN_ID1 == adminId1) {
+                            list.push({label: `${o.properties.NAME2}`, value: `${o.properties.ADMIN_ID2}`});
+                        }
+                    }
+                });
+            } else {
+                let geoDistrict = currentUser.rolesArea;
+                console.log(geoDistrict);
+                geoDistrict.forEach(function (elem) {
+                    let geoDistrictObj = districts.find(o => o.properties.ADMIN_ID2 == elem);
+                    if(geoDistrictObj) {
+                        list.push({label: `${geoDistrictObj.properties.NAME2}`, value: `${geoDistrictObj.properties.ADMIN_ID2}`});
+                    }
+                });
+            }
+
+        }
         return list;
     }
 });

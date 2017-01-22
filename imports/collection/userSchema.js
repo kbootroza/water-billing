@@ -82,8 +82,7 @@ export const UserSchema = new SimpleSchema({
         type: [String],
         label: 'Roles Area',
         autoform: {
-            multiple: true,
-            type: 'select'
+            type: 'select-checkbox-inline'
         }
     },
     areaId: {

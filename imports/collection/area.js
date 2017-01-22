@@ -1,5 +1,11 @@
 export const areaSchema = new SimpleSchema({
-    area: {
+    rolesBranch: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    rolesArea: {
         type: String,
         autoform: {
             type: 'select'

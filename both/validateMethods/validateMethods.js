@@ -53,7 +53,8 @@ export const updateUser = new ValidatedMethod({
                     },
                     rolesBranch: doc.rolesBranch,
                     rolesArea: doc.rolesArea,
-                    areaId: doc.areaId
+                    areaId: doc.areaId,
+                    roles: {}
                 }
             });
             // Update password
@@ -61,6 +62,7 @@ export const updateUser = new ValidatedMethod({
                 Accounts.setPassword(_id, doc.password);
             }
             // Update roles
+
             Roles.addUsersToRoles(_id, doc.roles, 'wb')
         }
     }
