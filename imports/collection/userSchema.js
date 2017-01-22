@@ -72,17 +72,19 @@ export const UserSchema = new SimpleSchema({
         }
     },
     rolesBranch: {
-        type: [String],
+        type: String,
         label: 'Roles Branch',
         autoform: {
-            type: 'select-checkbox-inline',
-            options(){
-                return [
-                    {label: 'Battambang', value: '02'},
-                ]
-            }
+            type: 'select'
         }
-
+    },
+    rolesArea: {
+        type: [String],
+        label: 'Roles Area',
+        autoform: {
+            multiple: true,
+            type: 'select'
+        }
     },
     areaId: {
         type: String,

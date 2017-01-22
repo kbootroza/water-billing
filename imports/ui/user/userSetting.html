@@ -35,7 +35,11 @@
                             <div class="row">
                                 <div class="col s6">
                                     <label for="">Roles Branch</label>
-                                    {{> afQuickField name='rolesBranch' size=10}}
+                                    {{> afQuickField name='rolesBranch' label=false options=geoProvinces}}
+                                </div>
+                                <div class="col s6">
+                                    <label for="">Roles Area</label>                                    
+                                    {{> afQuickField name='rolesArea' label=false options=geoArea}}
                                 </div>
 
                             </div>
@@ -49,6 +53,7 @@
                         </div>
                     </div>
                     <div class="row">
+                        {{>wb_preloader}}
                         {{>wb_actionAdd}}
                     </div>
                 {{/autoForm}}
@@ -94,6 +99,7 @@
                             </div>
                         </div>
                         <div class="row">
+                            {{>wb_preloader}}                            
                             {{>wb_actionEdit}}
                         </div>
                     {{/autoForm}}

@@ -5,7 +5,7 @@ import {areaSchema} from '../../collection/area';
 indexTmpl.onCreated(function () {
     this.areaOption = new ReactiveVar([]);
     this.autorun(() => {
-        Meteor.call('getRolesBranchList', (err, result) => {
+        Meteor.call('fetchProvinces', (err, result) => {
             console.log(result);
 
             if (result) {

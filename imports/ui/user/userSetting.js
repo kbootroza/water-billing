@@ -1,4 +1,4 @@
-import './userSetting.html'
+import './userSetting.html';
 import {FlowRouter} from 'meteor/kadira:flow-router'
 import {Template} from 'meteor/templating'
 // import collection
@@ -53,15 +53,54 @@ index.events({
 userSettingOptions.onRendered(function () {
     $('.dropdown-button').dropdown()
 });
+addTmpl.onCreated(function(){
+    this.geoProvinces = new ReactiveVar([]);
+    this.geoArea = new ReactiveVar([]);
+    this.provinceId = new ReactiveVar();
+    Meteor.call('fetchProvinces',(err,result) => {
+        if(result){
+            this.geoProvinces.set(result);
+        }
+    });
+    this.autorun(()=>{
+        let provinceId = this.provinceId.get()
+        if(provinceId){
+            Meteor.call('fetchDistricts',provinceId,(err,result)=>{
+                if(result){
+                    this.geoArea.set(result);
+                }
+            } );
+        }
+    })
+});
+addTmpl.onRendered(function(){
+    $('[name="rolesArea"]').select2();
+    $('[name="rolesBranch"]').select2();
+});
 addTmpl.helpers({
     schema() {
         return UserSchema
     },
     area(){
         return Session.get('area');
+    },
+    geoProvinces(){
+        let instance = Template.instance();
+        return instance.geoProvinces.get();
+    },
+    geoArea(){
+        let instance = Template.instance();
+        return instance.geoArea.get();
     }
 });
-
+addTmpl.events({
+    'change [name="rolesBranch"]'(event,instance){
+        let currentValue = event.currentTarget.value;
+        if(currentValue != ''){
+            instance.provinceId.set(currentValue);
+        }
+    }
+});
 editTmpl.onCreated(function () {
     this.subUserReady = new ReactiveVar(false);
     this.userData = new ReactiveVar([]);
@@ -100,18 +139,26 @@ AutoForm.hooks({
     wb_userEdit: {
         onSuccess(formType, result){
             Materialize.toast('Updated successfully', 3000, 'lime accent-4 rounded');
+            FlowRouter.query.unset();            
             FlowRouter.go('wb.userSetting')
         },
         onError(formType,err){
+            FlowRouter.query.unset();                        
             Materialize.toast(err.message, 3000, 'red rounded');
         }
     },
     wb_userAdd: {
         onSuccess(formType, result){
-            Materialize.toast('Successfully Created', 3000, 'lime accent-4 rounded');
+            Meteor.setTimeout(function(){
+                FlowRouter.query.unset();
+                Materialize.toast('Successfully Created', 3000, 'lime accent-4 rounded');
+            },500);
         },
         onError(formType,err){
-            Materialize.toast(err.message, 3000, 'red rounded');
+             Meteor.setTimeout(function(){
+                FlowRouter.query.unset();            
+                Materialize.toast(err.message, 3000, 'red rounded');
+             },500);
         }
     }
 });

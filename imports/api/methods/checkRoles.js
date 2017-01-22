@@ -1,6 +1,6 @@
 export const CheckRoles = ({roles}) => {
     let currentUser = Meteor.user();
-    if(currentUser.username == 'super') {
+    if(currentUser && currentUser.username == 'super') {
         return Roles.userIsInRole(currentUser._id, roles);
     }
     if(currentUser) {
