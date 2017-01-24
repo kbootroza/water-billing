@@ -19,6 +19,27 @@ Meteor.methods({
         });
         return list;
     },
+    fetchCommunes(adminId2){
+        let list = [];
+        console.log(adminId2);
+        let communes = JSON.parse(Assets.getText('geoData/commune.json'));
+        communes.map(function (o) {
+            if (o.properties.ADMIN_ID2 == adminId2) {
+                list.push({label: `${o.properties.NAME3}`, value: `${o.properties.ADMIN_ID3}`});
+            }
+        });
+        return list;
+    },
+    fetchVillages(adminId3){
+        let list = [];
+        let communes = JSON.parse(Assets.getText('geoData/village.json'));
+        communes.map(function (o) {
+            if (o.properties.ADMIN_ID3 == adminId3) {
+                list.push({label: `${o.properties.NAME}`, value: `${o.properties.ADMIN_ID}`});
+            }
+        });
+        return list;
+    },
     fetchRolesBranch(userId){
         let list = [];
         if (Meteor.userId()) {

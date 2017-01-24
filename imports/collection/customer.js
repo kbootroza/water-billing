@@ -9,7 +9,32 @@ import {moment} from 'meteor/momentjs:moment';
 
 
 export const WB_Customer=new Mongo.Collection("wb_customer");
-
+Wb_locationSchema = new SimpleSchema({
+    province: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    district: {
+        type: String,
+         autoform: {
+            type: 'select'
+        }
+    },
+    commune: {
+        type: String,
+         autoform: {
+            type: 'select'
+        }
+    },
+    village: {
+        type: String,
+         autoform: {
+            type: 'select'
+        }
+    }
+});
 WB_Customer.schema = new SimpleSchema({
 
     name: {
@@ -68,9 +93,13 @@ WB_Customer.schema = new SimpleSchema({
         label: "Contact",
         optional: true
     },
-
+    location: {
+        type: Wb_locationSchema
+    }
 
 });
+
+
 /**
  * Attach schema
  */

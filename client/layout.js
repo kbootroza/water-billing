@@ -8,7 +8,6 @@ import 'meteor/tap:i18n-ui';
 import '../imports/ui/area/area';
 import '../imports/ui/actionButtons/actionButton';
 import '../imports/ui/preloader/preloader';
-
 //Page
 import './layout.html';
 
