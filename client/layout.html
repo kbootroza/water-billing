@@ -36,21 +36,32 @@
         <ul id="slide-out" class="side-nav ">
             <li>
                 <div class="userView">
-                    <div class="background">
-                        <img src="images/office.jpg">
+                    <div class="background purple darken-1">
+                        <!--<img src="/images/Nexus_Wallpaper.jpg">-->
                     </div>
-                    <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-                    <a href="#!name"><span class="white-text name">John Doe</span></a>
-                    <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                    <a href="#!user"><img class="circle" src="/images/torvalds.jpg"></a>
+                    <a href="#!name"><span class="white-text name">{{currentUser.username}}</span></a>
+                    <a class="dropdown-button" data-activates='dropdown-profile'>
+                        <span class="white-text email">
+                            {{#each currentUser.emails}}
+                                {{address}}
+
+                            {{/each}}
+
+                        </span>
+                    </a>
                 </div>
+                <ul id='dropdown-profile' class='dropdown-content'>
+                    <li><a href="#!">one</a></li>
+                    <li><a href="#!">two</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#!">three</a></li>
+                </ul>
             </li>
-            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-            <li><a href="#!">Second Link</a></li>
             <li>
                 <div class="divider"></div>
             </li>
-            <li><a class="subheader">Subheader</a></li>
-            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+            <!--<li><a class="subheader">Subheader</a></li>-->
             <li class="{{isActiveRoute 'wb.home'}}">
                 <a class="waves-effect " href="{{pathFor 'wb.home'}}">
                     <i class="material-icons">home</i> <span>{{_ "wb.sidebarMenu.home"}}</span>
@@ -66,37 +77,37 @@
                     <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.customerType"}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{isActiveRoute 'wb.block'}}">
                 <a class="waves-effect" href="{{pathFor 'wb.block'}}">
                     <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.block"}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{isActiveRoute 'wb.category'}}">
                 <a class="waves-effect" href="{{pathFor 'wb.category'}}">
                     <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.category"}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{isActiveRoute 'wb.class'}}">
                 <a class="waves-effect" href="{{pathFor 'wb.class'}}">
                     <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.class"}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{isActiveRoute 'wb.district'}}">
                 <a class="waves-effect" href="{{pathFor 'wb.district'}}">
                     <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.district"}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{isActiveRoute 'wb.operationCode'}}">
                 <a class="waves-effect" href="{{pathFor 'wb.operationCode'}}">
                     <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.operationCode"}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{isActiveRoute 'wb.position'}}">
                 <a class="waves-effect" href="{{pathFor 'wb.position'}}">
                     <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.position"}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{isActiveRoute 'wb.quartier'}}">
                 <a class="waves-effect" href="{{pathFor 'wb.quartier'}}">
                     <i class="fa fa-angle-right"></i> <span>{{_ "wb.sidebarMenu.quartier"}}</span>
                 </a>

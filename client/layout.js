@@ -12,6 +12,7 @@ import '../imports/ui/preloader/preloader';
 import './layout.html';
 Template.navbar.onRendered(function(){
     $(".dropdown-button").dropdown();
+    $('#settings-dropdown').dropdown();
     $(".enable-sidenav").sideNav();
 });
 
