@@ -21,6 +21,7 @@ Meteor.publish('wb_customerTypeById', function wb_customerTypeById({_id}){
 //Customer
 Meteor.publish('wb_customerById', function wb_customerById({_id}){
     if(this.userId){
+        Meteor._sleepForMs(200);
         let doc =  WB_Customer.find({_id});
         return doc;
     }

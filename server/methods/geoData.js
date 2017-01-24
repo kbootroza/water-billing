@@ -21,7 +21,6 @@ Meteor.methods({
     },
     fetchCommunes(adminId2){
         let list = [];
-        console.log(adminId2);
         let communes = JSON.parse(Assets.getText('geoData/commune.json'));
         communes.map(function (o) {
             if (o.properties.ADMIN_ID2 == adminId2) {
@@ -75,7 +74,6 @@ Meteor.methods({
                 });
             } else {
                 let geoDistrict = currentUser.rolesArea;
-                console.log(geoDistrict);
                 geoDistrict.forEach(function (elem) {
                     let geoDistrictObj = districts.find(o => o.properties.ADMIN_ID2 == elem);
                     if(geoDistrictObj) {

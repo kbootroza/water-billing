@@ -10,8 +10,6 @@ import '../imports/ui/actionButtons/actionButton';
 import '../imports/ui/preloader/preloader';
 //Page
 import './layout.html';
-
-
 Template.navbar.onRendered(function(){
     $(".dropdown-button").dropdown();
     $(".enable-sidenav").sideNav();
