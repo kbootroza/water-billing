@@ -8,7 +8,7 @@ export const CustomerTabular = new Tabular.Table({
     name: "wb.customerTabular",
     collection: WB_Customer,
     columnDefs: [
-        {"width": "30px", "targets": 10}
+        {"width": "50px", "targets": 10}
     ],
     columns: [
         {data: "dpc", title: "DPC"},
