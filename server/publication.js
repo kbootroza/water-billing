@@ -8,6 +8,11 @@ import {WB_District} from "../imports/collection/district";
 import {WB_OperationCode} from "../imports/collection/operationCode";
 import {WB_Position} from "../imports/collection/position";
 import {WB_Quartier} from "../imports/collection/quartier";
+import {WB_Attension} from "../imports/collection/attension";
+import {WB_ReferenceType} from "../imports/collection/referenceType";
+import {WB_Reference} from "../imports/collection/reference";
+import {WB_Tariff} from "../imports/collection/tariff";
+
 
 //Customer Type
 Meteor.publish('wb_customerTypeById', function wb_customerTypeById({_id}){
@@ -81,6 +86,39 @@ Meteor.publish('wb_positionById', function wb_positionById({_id}){
 Meteor.publish('wb_quartierById', function wb_quartierById({_id}){
     if(this.userId){
         let doc =  WB_Quartier.find({_id});
+        return doc;
+    }
+    return this.ready();
+});
+//attension
+Meteor.publish('wb_attensionById', function wb_attensionById({_id}){
+    if(this.userId){
+        let doc =  WB_Attension.find({_id});
+        return doc;
+    }
+    return this.ready();
+});
+//referenceType
+Meteor.publish('wb_referenceTypeById', function wb_referenceTypeById({_id}){
+    if(this.userId){
+        let doc =  WB_ReferenceType.find({_id});
+        return doc;
+    }
+    return this.ready();
+});
+
+//reference
+Meteor.publish('wb_referenceById', function wb_referenceById({_id}){
+    if(this.userId){
+        let doc =  WB_Reference.find({_id});
+        return doc;
+    }
+    return this.ready();
+});
+//reference
+Meteor.publish('wb_tariffById', function wb_tariffById({_id}){
+    if(this.userId){
+        let doc =  WB_Tariff.find({_id});
         return doc;
     }
     return this.ready();

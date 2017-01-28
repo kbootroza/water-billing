@@ -14,6 +14,10 @@ import '../../imports/ui/district/district';
 import '../../imports/ui/operationCode/operationCode';
 import '../../imports/ui/position/position';
 import '../../imports/ui/quartier/quartier';
+import '../../imports/ui/attension/attension';
+import '../../imports/ui/referenceType/referenceType';
+import '../../imports/ui/reference/reference';
+import '../../imports/ui/tariff/tariff';
 
 
 //import layout render
@@ -212,5 +216,63 @@ waterBilling.route('/quartier/:quartierId/edit', {
     name: 'wb.quartierEdit',
     action: function (query, params) {
         _Main('wb_quartierEdit');
+    }
+});
+//attension
+waterBilling.route('/attension', {
+    name: 'wb.attension',
+    action: function (query, params) {
+        _Main('wb_attension');
+    }
+});
+waterBilling.route('/attension/:attensionId/edit', {
+    name: 'wb.attensionEdit',
+    action: function (query, params) {
+        _Main('wb_attensionEdit');
+    }
+});
+//referenceType
+waterBilling.route('/referenceType', {
+    name: 'wb.referenceType',
+    action: function (query, params) {
+        _Main('wb_referenceType');
+    }
+});
+waterBilling.route('/referenceType/:referenceTypeId/edit', {
+    name: 'wb.referenceTypeEdit',
+    action: function (query, params) {
+        _Main('wb_referenceTypeEdit');
+    }
+});
+//reference
+waterBilling.route('/reference', {
+    name: 'wb.reference',
+    action: function (query, params) {
+        _Main('wb_reference');
+    }
+});
+waterBilling.route('/reference/:referenceId/edit', {
+    name: 'wb.referenceEdit',
+    action: function (query, params) {
+        _Main('wb_referenceEdit');
+    }
+});
+//tariff
+waterBilling.route('/tariff', {
+    name: 'wb.tariff',
+    action: function (query, params) {
+        _Main('wb_tariff');
+    }
+});
+waterBilling.route('/tariff/add', {
+    name: 'wb.tariffAdd',
+    action: function (query, params) {
+        _Main('wb_tariffAdd');
+    }
+});
+waterBilling.route('/tariff/:tariffId/edit', {
+    name: 'wb.tariffEdit',
+    action: function (query, params) {
+        _Main('wb_tariffEdit');
     }
 });

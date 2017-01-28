@@ -1,0 +1,64 @@
+<template name="wb_referenceType">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-action">
+                {{>wb_referenceTypeAdd}}
+            </div>
+            <div class="animated fadeIn">
+                {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="wb_referenceTypeAdd">
+
+    <a class="btn waves-effect waves-light blue" href="#wb_referenceTypeAddModal">Add New</a>
+    <span class="right blue-text"><h4>{{_ "wb.referenceType.title"}}</h4></span>
+
+    {{#autoForm collection=collection id="wb_referenceTypeAdd" type="insert"}}
+        <!-- Modal Structure -->
+        <div id="wb_referenceTypeAddModal" class="modal">
+            <div class="modal-content">
+                <h5>Add Reference Type <span class="right"> <a href="#!" class="red-text modal-action modal-close"><i
+                        class="small material-icons">close</i></a></span>
+                </h5>
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='description'}}
+            </div>
+            <div class="modal-footer">
+                {{> wb_actionAdd}}
+            </div>
+        </div>
+    {{/autoForm}}
+</template>
+
+<template name="wb_referenceTypeEdit">
+    {{#if subscriptionsReady}}
+        <div class="container animated fadeIn">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">
+                        <i class="material-icons">build</i> Edit Reference Type<span class="right"><i
+                            class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
+                    </div>
+                    {{#autoForm collection=collection id="wb_referenceTypeEdit" doc=data type="update"}}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{> afQuickField name='name'}}
+                                {{> afQuickField name='description'}}
+                            </div>
+                           {{> wb_actionEdit}}
+                        </div>
+
+                    {{/autoForm}}
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div class="progress ">
+            <div class="indeterminate "></div>
+        </div>
+
+    {{/if}}
+</template>

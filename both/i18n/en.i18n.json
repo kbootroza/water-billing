@@ -10,7 +10,11 @@
       "district": "District",
       "operationCode": "Operation Code",
       "position": "Position",
-      "quartier": "Quartier"
+      "quartier": "Quartier",
+      "attension": "Attension",
+      "referenceType": "Reference Type",
+      "reference": "Reference",
+      "tariff": "Tariff"
     },
     "home": {
       "title": "Home"
@@ -74,6 +78,22 @@
     },
     "quartier": {
       "title": "Quartier",
+      "info": "Welcome to POS!"
+    },
+    "attension": {
+      "title": "Attension",
+      "info": "Welcome to POS!"
+    },
+    "referenceType": {
+      "title": "Reference Type",
+      "info": "Welcome to POS!"
+    },
+    "reference": {
+      "title": "Reference",
+      "info": "Welcome to POS!"
+    },
+    "tariff": {
+      "title": "Tariff",
       "info": "Welcome to POS!"
     },
     "meteor": {

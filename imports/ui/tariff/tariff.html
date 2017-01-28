@@ -1,0 +1,92 @@
+<template name="wb_tariff">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-action">
+                <a class="btn waves-effect waves-light blue add">Add New</a>
+                <span class="right blue-text"><h4>{{_ "wb.tariff.title"}}</h4></span>
+            </div>
+            <div class="animated fadeIn">
+                {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="wb_tariffAdd">
+    <div class="container animated fadeIn">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">
+                    <i class="material-icons">build</i> Add Tariff<span class="right"><i
+                        class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
+                </div>
+                {{#autoForm collection=collection id="wb_tariffAdd" type="insert"}}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col s6">
+                                {{> afQuickField name='code'}}
+                                {{> afQuickField name='startDate'}}
+                                <label>Category</label>
+                                {{> afQuickField name='categoryId' options=category label=false}}
+                                <label>Type</label>
+                                {{> afQuickField name='typeId' options=type label=false}}
+                            </div>
+                            <div class="col s6">
+                                <label>Unit Of Measure</label>
+                                {{> afQuickField name='measureId' options=measure label=false}}
+                                <label>Floor By</label>
+                                {{> afQuickField name='floorBy' options=floorBy label=false}}
+                                {{> afQuickField name='isFixedFloor'}}
+                            </div>
+                        </div>
+                        {{> wb_actionAdd}}
+                    </div>
+
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="wb_tariffEdit">
+    {{#if subscriptionsReady}}
+        <div class="container animated fadeIn">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">
+                        <i class="material-icons">build</i> Edit Tariff<span class="right"><i
+                            class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
+                    </div>
+                    {{#autoForm collection=collection id="wb_tariffEdit" doc=data type="update"}}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="col s6">
+                                    {{> afQuickField name='code'}}
+                                    {{> afQuickField name='startDate'}}
+                                    <label>Category</label>
+                                    {{> afQuickField name='categoryId' options=category label=false}}
+                                    <label>Type</label>
+                                    {{> afQuickField name='typeId' options=type label=false}}
+                                </div>
+                                <div class="col s6">
+                                    <label>Unit Of Measure</label>
+                                    {{> afQuickField name='measureId' options=measure label=false}}
+                                    <label>Floor By</label>
+                                    {{> afQuickField name='floorBy' options=floorBy label=false}}
+                                    {{> afQuickField name='isFixedFloor'}}
+                                </div>
+                            </div>
+                            {{> wb_actionEdit}}
+                        </div>
+
+                    {{/autoForm}}
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div class="progress ">
+            <div class="indeterminate "></div>
+        </div>
+
+    {{/if}}
+</template>

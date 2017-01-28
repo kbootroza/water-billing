@@ -1,0 +1,70 @@
+<template name="wb_reference">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-action">
+                {{>wb_referenceAdd}}
+            </div>
+            <div class="animated fadeIn">
+                {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="wb_referenceAdd">
+
+    <a class="btn waves-effect waves-light blue" href="#wb_referenceAddModal">Add New</a>
+    <span class="right blue-text"><h4>{{_ "wb.reference.title"}}</h4></span>
+
+    {{#autoForm collection=collection id="wb_referenceAdd" type="insert"}}
+        <!-- Modal Structure -->
+        <div id="wb_referenceAddModal" class="modal">
+            <div class="modal-content">
+                <h5>Add Reference<span class="right"> <a href="#!" class="red-text modal-action modal-close"><i
+                        class="small material-icons">close</i></a></span>
+                </h5>
+                {{> afQuickField name='code'}}
+                {{> afQuickField name='name'}}
+                <label>Reference Type</label>
+                {{> afQuickField name='referenceTypeId' options=referenceType label=false}}
+                {{> afQuickField name='description'}}
+            </div>
+            <div class="modal-footer">
+                {{> wb_actionAdd}}
+            </div>
+        </div>
+    {{/autoForm}}
+</template>
+
+<template name="wb_referenceEdit">
+    {{#if subscriptionsReady}}
+        <div class="container animated fadeIn">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">
+                        <i class="material-icons">build</i> Edit Reference<span class="right"><i
+                            class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span>
+                    </div>
+                    {{#autoForm collection=collection id="wb_referenceEdit" doc=data type="update"}}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{> afQuickField name='code'}}
+                                {{> afQuickField name='name'}}
+                                <label>Reference Type</label>
+                                {{> afQuickField name='referenceTypeId' options=referenceType label=false}}
+                                {{> afQuickField name='description'}}
+                            </div>
+                           {{> wb_actionEdit}}
+                        </div>
+
+                    {{/autoForm}}
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div class="progress ">
+            <div class="indeterminate "></div>
+        </div>
+
+    {{/if}}
+</template>
