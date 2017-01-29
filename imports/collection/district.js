@@ -7,14 +7,15 @@ import {AutoForm} from 'meteor/aldeed:autoform';
 import {moment} from 'meteor/momentjs:moment';
 
 
-
-export const WB_District=new Mongo.Collection("wb_district");
+export const WB_District = new Mongo.Collection("wb_district");
 
 WB_District.schema = new SimpleSchema({
 
     code: {
         type: String,
-        label: "Code"
+        label: "Code",
+        index: true,
+        unique: true
     },
     name: {
         type: String,
@@ -22,7 +23,12 @@ WB_District.schema = new SimpleSchema({
     },
     description: {
         type: String,
-        label: "Description"
+        label: "Description",
+        optional: true
+    },
+    rolesArea: {
+        type: String,
+        optional: true
     }
 
 });

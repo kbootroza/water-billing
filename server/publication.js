@@ -85,6 +85,7 @@ Meteor.publish('wb_positionById', function wb_positionById({_id}){
 //Quartier
 Meteor.publish('wb_quartierById', function wb_quartierById({_id}){
     if(this.userId){
+        Meteor._sleepForMs(200);
         let doc =  WB_Quartier.find({_id});
         return doc;
     }

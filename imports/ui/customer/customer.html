@@ -16,7 +16,7 @@
         {{#autoForm collection=collection id="wb_customerAdd" type="insert"}}
             <ul class="collapsible popout" data-collapsible="accordion">
                 <li>
-                    <div class="collapsible-header active"><i class="material-icons">account_circle</i>Add Customer<span
+                    <div class="z-depth-2 collapsible-header active"><i class="material-icons">account_circle</i>General<span
                             class="right"><i
                             class="material-icons small red-text cancel cursor-pointer">arrow_back</i></span></div>
                     <div class="collapsible-body">
@@ -24,11 +24,18 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="col s6">
-                                    {{> afQuickField name='name'}} {{> afQuickField name='khName'}} {{> afQuickField name='dpc'}} {{> afQuickField name='district'}}
-                                    {{> afQuickField name='quartier'}}
+                                    {{> afQuickField name='name'}}
+                                    {{> afQuickField name='khName'}}
+                                    <!--{{> afQuickField name='dpc'}}-->
+                                    <label for="">District</label>
+                                    {{> afQuickField name='district' label=false options=generalDistrictData }}
+                                    <label for="">Quartier</label>
+                                    {{> afQuickField name='quartier' label=false options=quartierData}}
+                                    <label for="">Block</label>
+                                    {{> afQuickField name='block' label=false options=blockData}}
                                 </div>
                                 <div class="col s6">
-                                    {{> afQuickField name='operationType'}} {{> afQuickField name='streetNo'}} {{> afQuickField name='address'}} {{> afQuickField
+                                    {{> afQuickField name='operationType' label="Operation Type"}} {{> afQuickField name='streetNo'}} {{> afQuickField name='address'}} {{> afQuickField
                                         name='phoneNumber'}} {{> afQuickField name='contact'}}
                                 </div>
                             </div>
@@ -67,7 +74,7 @@
                 <li>
                     <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
                     <div class="collapsible-body">
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <p class="white">Lorem ipsum dolor sit amet.</p>
                     </div>
                 </li>
             </ul>
@@ -139,7 +146,7 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
                         <div class="collapsible-body">
-                            <p>Lorem ipsum dolor sit amet.</p>
+                            <p class="white">Lorem ipsum dolor sit amet.</p>
                         </div>
                     </li>
                 </ul>

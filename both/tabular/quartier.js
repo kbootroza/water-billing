@@ -12,6 +12,7 @@ export const QuartierTabular = new Tabular.Table({
     ],
     columns: [
         {data: "_id", title: "No"},
+        {data: "districtCodeId", title: "District"},
         {data: "code", title: "Code"},
         {data: "name", title: "Name"},
         {data: "description", title: "Description"},

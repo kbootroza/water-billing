@@ -28,21 +28,32 @@ addTmpl.onCreated(function () {
     this.provinceId = new ReactiveVar();
     this.districtId = new ReactiveVar();
     this.communeId = new ReactiveVar();
-    this.villageId = new ReactiveVar();
+    this.quartierId = new ReactiveVar();
     this.provinceData = new ReactiveVar([]);
     this.districtData = new ReactiveVar([]);
     this.communeData = new ReactiveVar([]);
     this.villageData = new ReactiveVar([]);
+    this.quartierData = new ReactiveVar([]);
+    this.blockData = new ReactiveVar([]);
+    this.generalDistrictData = new ReactiveVar([]);
+    this.districtCodeId = new ReactiveVar();
     Meteor.call('fetchProvinces', (err, result) => {
         if (result) {
             this.provinceData.set(result);
+        }
+    });
+    Meteor.call('fetchGeneralDistrictData', (err, result) => {
+        if (result) {
+            this.generalDistrictData.set(result);
         }
     });
     this.autorun(() => {
         let provinceId = this.provinceId.get();
         let districtId = this.districtId.get();
         let communeId = this.communeId.get();
-        let villageId = this.villageId.get();
+        let quartierCode = this.quartierId.get();
+        let districtCodeId = this.districtCodeId.get();
+        console.log(districtCodeId);
         if (provinceId) {
             //get district
             Meteor.call('fetchDistricts', provinceId, (err, result) => {
@@ -70,6 +81,20 @@ addTmpl.onCreated(function () {
                     this.villageData.set(result);
                 } else {
                     console.log(err.message);
+                }
+            });
+        }
+        if (districtCodeId) {
+            Meteor.call('fetchQuartierByDistrictCodeId', districtCodeId, (err, result) => {
+                if (result) {
+                    this.quartierData.set(result);
+                }
+            });
+        }
+        if (quartierCode) {
+            Meteor.call('fetchBlockByQuartierCode', quartierCode, (err, result) => {
+                if (result) {
+                    this.blockData.set(result);
                 }
             });
         }
@@ -153,7 +178,10 @@ addTmpl.onRendered(function () {
     $('[name="location.province"]').select2();
     $('[name="location.district"]').select2();
     $('[name="location.commune"]').select2();
-    $('[name="location.village"]').select2()
+    $('[name="location.village"]').select2();
+    $('[name="district"]').select2();
+    $('[name="quartier"]').select2();
+    $('[name="block"]').select2();
 });
 
 editTmpl.onRendered(function () {
@@ -168,11 +196,11 @@ editTmpl.onRendered(function () {
                 $('[name="location.village"]').select2();
             }, 200);
             let id = FlowRouter.getParam('customerId');
-            let customer =  WB_Customer.findOne(id);
-            if(customer) {
+            let customer = WB_Customer.findOne(id);
+            if (customer) {
                 this.provinceId.set(customer.location && customer.location.province);
-                this.districtId.set(customer.location &&customer.location.district);
-                this.communeId.set(customer.location &&customer.location.commune);
+                this.districtId.set(customer.location && customer.location.district);
+                this.communeId.set(customer.location && customer.location.commune);
             }
         }
     });
@@ -213,6 +241,18 @@ addTmpl.helpers({
     village(){
         let instance = Template.instance();
         return instance.villageData.get();
+    },
+    generalDistrictData(){
+        let instance = Template.instance();
+        return instance.generalDistrictData.get();
+    },
+    quartierData(){
+        let instance = Template.instance();
+        return instance.quartierData.get();
+    },
+    blockData(){
+        let instance = Template.instance();
+        return instance.blockData.get();
     }
 });
 
@@ -243,6 +283,10 @@ editTmpl.helpers({
     village(){
         let instance = Template.instance();
         return instance.villageData.get();
+    },
+    generalDistrictData(){
+        let instance = Template.instance();
+        return instance.generalDistrictData.get();
     }
 });
 detailTmpl.helpers({
@@ -305,6 +349,12 @@ addTmpl.events({
     },
     'change [name="location.commune"]'(event, instance){
         instance.communeId.set(event.currentTarget.value);
+    },
+    'change [name="district"]'(event, instance){
+        instance.districtCodeId.set(event.currentTarget.value);
+    },
+    'change [name="quartier"]'(event, instance){
+        instance.quartierId.set(event.currentTarget.value);
     }
 });
 

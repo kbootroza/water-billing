@@ -5,7 +5,7 @@ import {GeneralFunction} from '../../imports/api/methods/generalFunction.js';
 import {WB_Block} from '../../imports/collection/block';
 
 WB_Block.before.insert(function (userId, doc) {
-    doc._id = GeneralFunction.generateId(WB_Block, 3);
+    doc._id = GeneralFunction.generatePrefixId(WB_Block, doc.rolesArea, 3);
 });
 
 

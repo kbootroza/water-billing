@@ -7,8 +7,7 @@ import {AutoForm} from 'meteor/aldeed:autoform';
 import {moment} from 'meteor/momentjs:moment';
 
 
-
-export const WB_Customer=new Mongo.Collection("wb_customer");
+export const WB_Customer = new Mongo.Collection("wb_customer");
 Wb_locationSchema = new SimpleSchema({
     province: {
         type: String,
@@ -18,19 +17,19 @@ Wb_locationSchema = new SimpleSchema({
     },
     district: {
         type: String,
-         autoform: {
+        autoform: {
             type: 'select'
         }
     },
     commune: {
         type: String,
-         autoform: {
+        autoform: {
             type: 'select'
         }
     },
     village: {
         type: String,
-         autoform: {
+        autoform: {
             type: 'select'
         }
     }
@@ -56,17 +55,23 @@ WB_Customer.schema = new SimpleSchema({
         type: String,
         label: "District",
         optional: true,
-        // autoform: {
-        //     type: "select2",
-        //     options: function () {
-        //         // return SelectOpts.currency(false);
-        //     }
-        // }
+        autoform: {
+            type: "select"
+        }
     },
     quartier: {
         type: String,
         label: "Quartier",
-        optional: true
+        optional: true,
+        autoform: {
+            type: 'select'
+        }
+    },
+    block: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
     },
     operationCode: {
         type: String,

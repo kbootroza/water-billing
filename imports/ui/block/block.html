@@ -22,6 +22,10 @@
                 <h5>Add Block <span class="right"> <a href="#!" class="red-text modal-action modal-close"><i
                         class="small material-icons">close</i></a></span>
                 </h5>
+                <label for="">District</label>
+                {{> afQuickField name="districtCode" label=false options=districtCodeData}}
+                <label for="">Quartier</label>
+                {{> afQuickField name="quartierCode" label=false options=quartierCodedata}}
                 {{> afQuickField name='code'}}
                 {{> afQuickField name='name'}}
                 {{> afQuickField name='description'}}
@@ -45,11 +49,15 @@
                     {{#autoForm collection=collection id="wb_blockEdit" doc=data type="update"}}
                         <div class="row">
                             <div class="col-xs-12">
+                                <label for="">District</label>
+                                {{> afQuickField name="districtCode" label=false options=districtCodeData}}
+                                <label for="">Quartier</label>
+                                {{> afQuickField name="quartierCode" label=false options=quartierCodedata}}
                                 {{> afQuickField name='code'}}
                                 {{> afQuickField name='name'}}
                                 {{> afQuickField name='description'}}
                             </div>
-                           {{> wb_actionEdit}}
+                            {{> wb_actionEdit}}
                         </div>
 
                     {{/autoForm}}

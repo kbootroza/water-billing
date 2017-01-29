@@ -12,6 +12,7 @@ import {WB_Quartier} from '../../collection/quartier';
 
 //Tabular
 import {QuartierTabular} from '../../../both/tabular/quartier';
+import {clearSelect2} from "../../../client/libs/clear-select";
 
 
 let indexTmpl = Template.wb_quartier,
@@ -28,17 +29,28 @@ indexTmpl.onCreated(function () {
 
 });
 addTmpl.onCreated(function () {
-
+    this.districtData = new ReactiveVar([]);
+    Meteor.call('fetchGeneralDistrictData', (err, result) => {
+        if (result) {
+            this.districtData.set(result);
+        }
+    });
 });
 editTmpl.onCreated(function () {
     this.subUserReady = new ReactiveVar(false);
-    this.autorun(()=>{
-        let id = FlowRouter.getParam('quartierId');
-        if(id){
-            this.subscription = Meteor.subscribe('wb_quartierById', {_id: id});
-            console.log(this.subscription);
+    this.districtData = new ReactiveVar([]);
+    Meteor.call('fetchGeneralDistrictData', (err, result) => {
+        if (result) {
+            this.districtData.set(result);
         }
     });
+    this.autorun(() => {
+        let id = FlowRouter.getParam('quartierId');
+        if (id) {
+            this.subscription = Meteor.subscribe('wb_quartierById', {_id: id});
+        }
+    });
+
 });
 
 
@@ -49,12 +61,16 @@ indexTmpl.onRendered(function () {
 
 addTmpl.onRendered(function () {
     $('.modal').modal();
+    $('[name="districtCodeId"]').select2();
 });
 
 editTmpl.onRendered(function () {
-    this.autorun(()=>{
-        if(this.subscription.ready()){
-            this.subUserReady.set(true)
+    this.autorun(() => {
+        if (this.subscription.ready()) {
+            this.subUserReady.set(true);
+            Meteor.setTimeout(function () {
+                $('[name="districtCodeId"]').select2();
+            }, 500);
         }
     });
 });
@@ -69,6 +85,10 @@ indexTmpl.helpers({
 addTmpl.helpers({
     collection(){
         return WB_Quartier;
+    },
+    fetchGeneralDistrict(){
+        let instance = Template.instance();
+        return instance.districtData.get();
     }
 });
 
@@ -84,15 +104,18 @@ editTmpl.helpers({
 
         let id = FlowRouter.getParam('quartierId');
         return WB_Quartier.findOne(id);
+    },
+    fetchGeneralDistrict(){
+        let instance = Template.instance();
+        return instance.districtData.get();
     }
-
 });
 
 
 //====================================Event===================
 indexTmpl.events({
-    'click .remove'(e,t){
-        var self=this;
+    'click .remove'(e, t){
+        var self = this;
         alertify.confirm(
             "Quartier",
             "Are you sure to delete [" + self._id + "]?",
@@ -121,7 +144,7 @@ indexTmpl.events({
 addTmpl.events({})
 
 editTmpl.events({
-    'click .cancel'(e,t){
+    'click .cancel'(e, t){
         FlowRouter.go(`/waterBilling/quartier`);
     }
 })
@@ -149,10 +172,12 @@ AutoForm.hooks({
     wb_quartierAdd: {
         before: {
             insert: function (doc) {
+                doc.rolesArea = Session.get('area');
                 return doc;
             }
         },
         onSuccess: function (formType, result) {
+            clearSelect2($('[name="districtId"]'));
             $('#wb_quartierAddModal').modal('close');
             Materialize.toast('Successful', 3000, 'lime accent-4 rounded');
         },
