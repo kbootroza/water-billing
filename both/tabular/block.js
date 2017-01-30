@@ -12,6 +12,8 @@ export const BlockTabular = new Tabular.Table({
     ],
     columns: [
         {data: "_id", title: "No"},
+        {data: "districtCode", title: "District"},
+        {data: "quartierCode", title: "Quartier"},
         {data: "code", title: "Code"},
         {data: "name", title: "Name"},
         {data: "description", title: "Description"},

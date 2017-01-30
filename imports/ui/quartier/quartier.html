@@ -1,11 +1,13 @@
 <template name="wb_quartier">
-    <div class="card">
-        <div class="card-content">
-            <div class="card-action">
-                {{>wb_quartierAdd}}
-            </div>
-            <div class="animated fadeIn">
-                {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
+    <div class="container">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-action">
+                    {{>wb_quartierAdd}}
+                </div>
+                <div class="animated fadeIn">
+                    {{> tabular table=dataTable selector=selector class="cursor-pointer table striped"}}
+                </div>
             </div>
         </div>
     </div>
@@ -23,6 +25,7 @@
                 <h5>Add Quartier <span class="right"> <a href="#!" class="red-text modal-action modal-close"><i
                         class="small material-icons">close</i></a></span>
                 </h5>
+                {{> afQuickField name='districtCodeId' label=false options=fetchGeneralDistrict}}
                 {{> afQuickField name='code'}}
                 {{> afQuickField name='name'}}
                 {{> afQuickField name='description'}}
@@ -35,7 +38,11 @@
 </template>
 
 <template name="wb_quartierEdit">
-    {{#if subscriptionsReady}}
+    {{#unless subscriptionsReady}}
+        <div class="progress ">
+            <div class="indeterminate blue darken-1"></div>
+        </div>
+    {{else}}
         <div class="container animated fadeIn">
             <div class="card">
                 <div class="card-content">
@@ -46,21 +53,18 @@
                     {{#autoForm collection=collection id="wb_quartierEdit" doc=data type="update"}}
                         <div class="row">
                             <div class="col-xs-12">
+                                <label for="">District</label>
+                                {{> afQuickField name='districtCodeId' label=false options=fetchGeneralDistrict}}
                                 {{> afQuickField name='code'}}
                                 {{> afQuickField name='name'}}
                                 {{> afQuickField name='description'}}
                             </div>
-                           {{> wb_actionEdit}}
+                            {{> wb_actionEdit}}
                         </div>
 
                     {{/autoForm}}
                 </div>
             </div>
         </div>
-    {{else}}
-        <div class="progress ">
-            <div class="indeterminate blue darken-1 "></div>
-        </div>
-
-    {{/if}}
+    {{/unless}}
 </template>

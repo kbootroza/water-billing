@@ -5,7 +5,7 @@ import {GeneralFunction} from '../../imports/api/methods/generalFunction.js';
 import {WB_District} from '../../imports/collection/district';
 
 WB_District.before.insert(function (userId, doc) {
-    doc._id = GeneralFunction.generateId(WB_District, 3);
+    doc._id = GeneralFunction.generatePrefixId(WB_District, doc.rolesArea,2);
 });
 
 

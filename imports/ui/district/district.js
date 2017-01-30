@@ -149,6 +149,7 @@ AutoForm.hooks({
     wb_districtAdd: {
         before: {
             insert: function (doc) {
+                doc.rolesArea = Session.get('area');
                 return doc;
             }
         },

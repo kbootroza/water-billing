@@ -11,8 +11,22 @@ import {moment} from 'meteor/momentjs:moment';
 export const WB_Block=new Mongo.Collection("wb_block");
 
 WB_Block.schema = new SimpleSchema({
-
+    districtCode: {
+        type: String,
+        index: true,
+        autoform:{
+            type: 'select'
+        }
+    },
+    quartierCode: {
+        type: String,
+        index: true,
+        autoform: {
+            type: 'select'
+        }
+    },
     code: {
+        index: true,
         type: String,
         label: "Code"
     },
@@ -22,7 +36,12 @@ WB_Block.schema = new SimpleSchema({
     },
     description: {
         type: String,
-        label: "Description"
+        label: "Description",
+        optional: true
+    },
+    rolesArea: {
+        type: String,
+        optional: true
     }
 
 });

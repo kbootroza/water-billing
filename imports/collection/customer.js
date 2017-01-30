@@ -1,14 +1,21 @@
 /**
  * Created by snr on 1/15/17.
  */
-import {Mongo} from 'meteor/mongo';
-import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-import {AutoForm} from 'meteor/aldeed:autoform';
-import {moment} from 'meteor/momentjs:moment';
+import {
+    Mongo
+} from 'meteor/mongo';
+import {
+    SimpleSchema
+} from 'meteor/aldeed:simple-schema';
+import {
+    AutoForm
+} from 'meteor/aldeed:autoform';
+import {
+    moment
+} from 'meteor/momentjs:moment';
 
 
-
-export const WB_Customer=new Mongo.Collection("wb_customer");
+export const WB_Customer = new Mongo.Collection("wb_customer");
 Wb_locationSchema = new SimpleSchema({
     province: {
         type: String,
@@ -18,32 +25,31 @@ Wb_locationSchema = new SimpleSchema({
     },
     district: {
         type: String,
-         autoform: {
+        autoform: {
             type: 'select'
         }
     },
     commune: {
         type: String,
-         autoform: {
+        autoform: {
             type: 'select'
         }
     },
     village: {
         type: String,
-         autoform: {
+        autoform: {
             type: 'select'
         }
     }
 });
 WB_Customer.schema = new SimpleSchema({
-
     name: {
         type: String,
-        label: "Name"
+        label: "Name*"
     },
     khName: {
         type: String,
-        label: "Khmer Name",
+        label: "Khmer Name*",
         optional: true
 
     },
@@ -56,17 +62,83 @@ WB_Customer.schema = new SimpleSchema({
         type: String,
         label: "District",
         optional: true,
-        // autoform: {
-        //     type: "select2",
-        //     options: function () {
-        //         // return SelectOpts.currency(false);
-        //     }
-        // }
+        autoform: {
+            type: "select"
+        }
     },
     quartier: {
         type: String,
         label: "Quartier",
-        optional: true
+        optional: true,
+        autoform: {
+            type: 'select'
+        }
+    },
+    block: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    folio: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    successor: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    category: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    activity: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    group: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    billingCycle: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    tariff: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    class: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    position: {
+        type: String,
+        autoform: {
+            type: 'select',
+            options(){
+                return [
+                        {label: 'Active', value: 'active'},
+                        {label: 'Inactive', value: 'inactive'},
+                    ]
+            }
+        }
     },
     operationCode: {
         type: String,
@@ -107,5 +179,3 @@ WB_Customer.schema = new SimpleSchema({
 Meteor.startup(function () {
     WB_Customer.attachSchema(WB_Customer.schema);
 });
-
-
