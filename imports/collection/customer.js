@@ -1,10 +1,18 @@
 /**
  * Created by snr on 1/15/17.
  */
-import {Mongo} from 'meteor/mongo';
-import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-import {AutoForm} from 'meteor/aldeed:autoform';
-import {moment} from 'meteor/momentjs:moment';
+import {
+    Mongo
+} from 'meteor/mongo';
+import {
+    SimpleSchema
+} from 'meteor/aldeed:simple-schema';
+import {
+    AutoForm
+} from 'meteor/aldeed:autoform';
+import {
+    moment
+} from 'meteor/momentjs:moment';
 
 
 export const WB_Customer = new Mongo.Collection("wb_customer");
@@ -35,14 +43,13 @@ Wb_locationSchema = new SimpleSchema({
     }
 });
 WB_Customer.schema = new SimpleSchema({
-
     name: {
         type: String,
-        label: "Name"
+        label: "Name*"
     },
     khName: {
         type: String,
-        label: "Khmer Name",
+        label: "Khmer Name*",
         optional: true
 
     },
@@ -71,6 +78,66 @@ WB_Customer.schema = new SimpleSchema({
         type: String,
         autoform: {
             type: 'select'
+        }
+    },
+    folio: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    successor: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    category: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    activity: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    group: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    billingCycle: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    tariff: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    class: {
+        type: String,
+        autoform: {
+            type: 'select'
+        }
+    },
+    position: {
+        type: String,
+        autoform: {
+            type: 'select',
+            options(){
+                return [
+                        {label: 'Active', value: 'active'},
+                        {label: 'Inactive', value: 'inactive'},
+                    ]
+            }
         }
     },
     operationCode: {
@@ -112,5 +179,3 @@ WB_Customer.schema = new SimpleSchema({
 Meteor.startup(function () {
     WB_Customer.attachSchema(WB_Customer.schema);
 });
-
-
